@@ -1,15 +1,11 @@
 
 const { sign, box, secretbox, randomBytes } = require("tweetnacl")
-const createHash = require('create-hash');
-const {
-  decodeUTF8,
-  encodeUTF8,
-  encodeBase64,
-  decodeBase64
-} = require("tweetnacl-util")
+const createHash = require('create-hash')
+const createHmac = require('create-hmac')
+// const { decodeUTF8, encodeUTF8, encodeBase64, decodeBase64 } = require("tweetnacl-util")
 
 const bip39 = require('bip39');
-const crypto = require("crypto");
+// const crypto = require("crypto");
 
 const { NyzoFormat } = require("./NyzoFormat")
 nyzoFormat = new NyzoFormat()
@@ -47,12 +43,29 @@ NyzoKey.prototype.toSeedHexWithDashes = function() {
 NyzoKey.prototype.fromBIP39 = function (passPhrase, password='') {
     // HD Wallet from BIP39 - Uses seed and chainCode for derivation
     if (password == '') password = DEFAULT_PASSWORD
-    let seed512 = bip39.mnemonicToSeedSync(passPhrase, password)
+    let seed512 = bip39.mnemonicToSeedSync(passPhrase, password)  // This is a buffer
     // seed256 = createHash('sha256').update(seed512).digest()
     this.seed = seed512.slice(0, 32)
     this.chainCode = seed512.slice(32)
     this.keyPair = sign.keyPair.fromSeed(this.seed)
     return this
+}
+
+
+NyzoKey.prototype.derive = function (index) {
+    // Returns derived key at index
+    const indexBuffer = Buffer.allocUnsafe(4)
+    indexBuffer.writeUInt32BE(index, 0)
+    // key = Buffer.from(this.toSeedHex, 'hex')
+    const data = Buffer.concat([Buffer.alloc(1, 0), this.seed, indexBuffer])
+    const I = createHmac('sha512', Buffer.from(this.chainCode)).update(data).digest()
+    const IL = I.slice(0, 32)
+    const IR = I.slice(32)
+    derived = new NyzoKey()
+    derived.seed = IL
+    derived.keyPair = sign.keyPair.fromSeed(derived.seed)
+    derived.chainCode = IR
+    return derived
 }
 
 
@@ -86,14 +99,7 @@ NyzoKey.prototype.toPubKeyHexWithDashes = function () {
 }
 
 
-/*
-NyzoKey.prototype.toPubKey = function () {
-    if (this.pubKey === undefined) this.pubKey = ccrypto.toPublic(this.seed);
-    return this.pubKey;
-}*/
-
-
 module.exports = {
-    version: "0.0.2",
+    version: "0.0.3",
     NyzoKey
 }

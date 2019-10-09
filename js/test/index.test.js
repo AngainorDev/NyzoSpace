@@ -18,7 +18,13 @@ const nyzoPubkey1Hex = '0ba351a7463852aa0eba49118b92af903aedf56970c4dab18540da77
 const nyzoPubkey1 = '0ba351a7463852aa-0eba49118b92af90-3aedf56970c4dab1-8540da7702aab99b'
 
 
+const derived_1 = '0b579bd21b2e2c23-7875312fab36758c-bdd567bf2df153e9-bff9515215979961'
+const derived_314 = '7c81c71ad3f1a851-d9b999744ac59905-0925e25f27e20710-45f87c1c2883dbee'
+const derived_1_1 = '22c9ba332e1e67c2-938b29be8d98aad4-8d67de646d5ec213-6776a454721b0120'
+
+
 nyzoFormat = new NyzoFormat()
+
 
 describe("Seed Tests", () => {
   test("Convert mnemonic1 to root keypair", () => {
@@ -72,5 +78,28 @@ describe("Papercodes Tests", () => {
     // console.log("Papercode 2", paperCode)
     const testKey = new NyzoKey().fromPaperCode(paperCode)
     expect(testKey.toSeedHexWithDashes()).toBe(sampleSeed2)
+  })
+})
+
+
+describe("Derivation Tests", () => {
+  test("Derive mnemonic1 /1", () => {
+    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic1)
+    derived = parentKey.derive(1)
+    // console.log("Seed 1", derived.toSeedHexWithDashes())
+    expect(derived.toSeedHexWithDashes()).toBe(derived_1)
+  })
+  test("Derive mnemonic1 /314", () => {
+    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic1)
+    derived = parentKey.derive(314)
+    // console.log("Seed 314", derived.toSeedHexWithDashes())
+    expect(derived.toSeedHexWithDashes()).toBe(derived_314)
+  })
+  test("Derive mnemonic1 /1/1", () => {
+    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic1)
+    derived1 = parentKey.derive(1)
+    derived1_1 = derived1.derive(1)
+    // console.log("Seed 1/1", derived1_1.toSeedHexWithDashes())
+    expect(derived1_1.toSeedHexWithDashes()).toBe(derived_1_1)
   })
 })

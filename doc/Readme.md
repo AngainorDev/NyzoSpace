@@ -14,6 +14,7 @@ Failure since the private key len is not the same.
 
 ## Changelog
 
+- v0.3: Derivation
 - v0.2: Move to tweetnacl
 - V0.1: Init tests
 

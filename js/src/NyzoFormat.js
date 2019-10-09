@@ -2,7 +2,6 @@
 
 // const { decodeUTF8, encodeUTF8, encodeBase64, decodeBase64 } = require("tweetnacl-util")
 
-
 function NyzoFormat() {
 }
 
@@ -57,7 +56,7 @@ NyzoFormat.prototype.hexStringFromArray = function(byteArray, index=0, length=32
         }
         result += byteString
     }
-    return result;
+    return result
 }
 
 
@@ -72,6 +71,9 @@ NyzoFormat.prototype.hexStringToByteArray2 = function(nyzoSeed) {
 
 
 /*
+
+// From nyzo.co
+
 function intValueFromArray(byteArray, index, length) {
 
 var timestamp = 0;
