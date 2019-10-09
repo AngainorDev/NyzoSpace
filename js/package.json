@@ -4,11 +4,13 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "cardano-crypto.js": "^5.3.3",
-    "lodash": "^4.17.15"
+    "bip39": "^3.0.2",
+    "create-hash": "^1.2.0",
+    "lodash": "^4.17.15",
+    "tweetnacl": "^1.0.1",
+    "tweetnacl-util": "^0.15.0"
   },
   "devDependencies": {
-    "emscripten": "0.0.2-beta",
     "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
     "jest": "^24.9.0",

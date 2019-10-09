@@ -1,11 +1,15 @@
-const ccrypto = require('cardano-crypto.js')
+
+const { NyzoFormat } = require("../src/NyzoFormat")
 const { NyzoKey } = require("../src/NyzoKey")
 
-// From cardano-crypto.js tests
-const sampleWalletMnemonicV1 = 'logic easily waste eager injury oval sentence wine bomb embrace gossip supreme'
-const sampleWalletMnemonicV2 = 'cost dash dress stove morning robust group affair stomach vacant route volume yellow salute laugh'
-const sampleRootKeypairV1Hex = 'd809b1b4b4c74734037f76aace501730a3fe2fca30b5102df99ad3f7c0103e48d54cde47e9041b31f3e6873d700d83f7a937bea746dadfa2c5b0a6a92502356ce6f04522f875c1563682ca876ddb04c2e2e3ae718e3ff9f11c03dd9f9dccf69869272d81c376382b8a87c21370a7ae9618df8da708d1a9490939ec54ebe43000'
-const sampleRootKeypairV2Hex = 'a018cd746e128a0be0782b228c275473205445c33b9000a33dd5668b430b574426877cfe435fddda02409b839b7386f3738f10a30b95a225f4b720ee71d2505b5569bc9fa461f67b9355b3da8bd4298c5099fd4e001415117a59b424f85ce48cca8cc35f3c2be27b0b26562448a3a4b6bfd1a3828918b87ae76ce17ae96a8306'
+const sampleWalletMnemonic1 = 'logic easily waste eager injury oval sentence wine bomb embrace gossip supreme'
+const sampleSeed1 = '3ba3ed0935e23225-5d6835132697fc42-cb95e766e90d918e-d258c18717df14e0'
+const samplePaperCode1 = 'desert buyer drastic hint case bargain interest allow basket cruise yellow machine rich victory option canvas muscle isolate normal loan imitate usage fatal boss'
+const samplePub1 = '9aa6d752ca4f83e4-5087e18780997f06-93f2ba942e457c55-2103c7b0688f7143'
+const sampleWalletMnemonic2 = 'cost dash dress stove morning robust group affair stomach vacant route volume yellow salute laugh'
+const sampleSeed2 = 'd602bb4aad303c58-40706fa169bc8d7a-d658274ec93ec37a-d94965b715b79ce1'
+const samplePaperCode2 = 'stock beyond sport foil adult club achieve assume pause evil cash volcano grain beauty depth chief sell strategy false slice image swift inform chest'
+const samplePub2 = '814efed36dad003a-e7f186dca982d8b0-58fbfbc3e9b85f90-cfbcbc6dfde6068e'
 
 
 const nyzoSeed1 = '0000000000000000-1111111111111111-2222222222222222-3333333333333333'
@@ -14,27 +18,59 @@ const nyzoPubkey1Hex = '0ba351a7463852aa0eba49118b92af903aedf56970c4dab18540da77
 const nyzoPubkey1 = '0ba351a7463852aa-0eba49118b92af90-3aedf56970c4dab1-8540da7702aab99b'
 
 
+nyzoFormat = new NyzoFormat()
+
 describe("Seed Tests", () => {
-  test("Convert mnemonicV1 to root keypair", async () => {
-    const parentWalletSecret = await ccrypto.mnemonicToRootKeypair(sampleWalletMnemonicV1, 1)
-    // console.log(parentWalletSecret)
-    expect(parentWalletSecret.toString('hex')).toBe(sampleRootKeypairV1Hex)
+  test("Convert mnemonic1 to root keypair", () => {
+    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic1)
+    // console.log("Seed", parentKey.toSeedHexWithDashes())
+    expect(parentKey.toSeedHexWithDashes()).toBe(sampleSeed1)
+    // console.log("Hex", parentKey.toPubKeyHex())
+    // console.log("Hex/dashes", parentKey.toPubKeyHexWithDashes())
+    expect(parentKey.toPubKeyHexWithDashes()).toBe(samplePub1)
   })
-  test("Convert mnemonicV2 to root keypair", async () => {
-    const parentWalletSecret = await ccrypto.mnemonicToRootKeypair(sampleWalletMnemonicV2, 2)
-    // console.log(parentWalletSecret)
-    expect(parentWalletSecret.toString('hex')).toBe(sampleRootKeypairV2Hex)
+  test("Convert mnemonic2 to root keypair", () => {
+    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic2)
+    // console.log("Seed", parentKey.toSeedHexWithDashes())
+    expect(parentKey.toSeedHexWithDashes()).toBe(sampleSeed2)
+    // console.log("Hex/dashes", parentKey.toPubKeyHexWithDashes())
+    expect(parentKey.toPubKeyHexWithDashes()).toBe(samplePub2)
   })
-  test("Convert Nyzo seed to buffer", async () => {
+  test("Convert Nyzo seed to buffer",  () => {
     const nyzoKey = new NyzoKey(nyzoSeed1)
     expect(nyzoKey.seed.toString('hex')).toBe(nyzoBuffer1Hex)
+    const nyzoSeed2 = Buffer.from(nyzoFormat.hexStringToByteArray(nyzoSeed1))
+    expect(nyzoSeed2.toString('hex')).toBe(nyzoBuffer1Hex)
   })
 })
 
+
 describe("Pubkey Tests", () => {
-  test("Convert Nyzo seed to pubkey", async () => {
+  test("Convert Nyzo seed to pubkey",  () => {
     const nyzoKey = new NyzoKey(nyzoSeed1)
-    //console.log(nyzoKey.toPubKey())
-    expect(nyzoKey.toPubKey().toString('hex')).toBe(nyzoPubkey1Hex)
+    const nyzoPublic = nyzoKey.toPubKeyHexWithDashes()
+    expect(nyzoPublic).toBe(nyzoPubkey1)
+  })
+  test("Convert Nyzo seed2 to pubkey",  () => {
+    const nyzoKey = new NyzoKey(sampleSeed2)
+    expect(nyzoKey.toPubKeyHexWithDashes()).toBe(samplePub2)
+  })
+})
+
+
+describe("Papercodes Tests", () => {
+  test("Convert sampleSeed1 to Papercode and back", () => {
+    const singleKey = new NyzoKey(sampleSeed1)
+    const paperCode = singleKey.toPaperCode()
+    // console.log("Papercode 1", paperCode)
+    const testKey = new NyzoKey().fromPaperCode(paperCode)
+    expect(testKey.toSeedHexWithDashes()).toBe(sampleSeed1)
+  })
+  test("Convert sampleSeed2 to Papercode and back", () => {
+    const singleKey = new NyzoKey(sampleSeed2)
+    const paperCode = singleKey.toPaperCode()
+    // console.log("Papercode 2", paperCode)
+    const testKey = new NyzoKey().fromPaperCode(paperCode)
+    expect(testKey.toSeedHexWithDashes()).toBe(sampleSeed2)
   })
 })
