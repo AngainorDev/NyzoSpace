@@ -12,8 +12,10 @@ JS Port.
 - Usual operations on keys, incl. derivation and several formats.
 - conforms to SLIP-0010 
 
+Auto build Github pages version: https://angainordev.github.io/NyzoSpace/js/dist/index.httml 
 
-## Derivation mechanism
+
+## Derivation mechanism
 
 Note: This implementation follows SLIP-0010 https://github.com/satoshilabs/slips/blob/master/slip-0010.md
 
@@ -41,7 +43,7 @@ entropy (32 bytes) <=> BIP 39 mnemonic (24 words)
 entropy (32 bytes) <=> seed (32 bytes)
 
 
-## Tests 
+## Tests 
 
 See test directory for API and sample use.
 
@@ -63,3 +65,5 @@ Donations will help us maintain and improve this tool and other ones
 
 Nyzo public id:  
 77970524776adbe8-9842f4e6ad82984e-f3cad89bed86658d-4c48ff1bee26e4e2
+
+![](https://github.com/AngainorDev/NyzoSpace/raw/master/angainor-pub.png)
