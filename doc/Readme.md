@@ -12,12 +12,12 @@ JS Port.
 - Usual operations on keys, incl. derivation and several formats.
 - conforms to SLIP-0010 
 
-Auto build Github pages version: https://angainordev.github.io/NyzoSpace/js/dist/index.httml 
+Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dist/index.html](https://angainordev.github.io/NyzoSpace/js/dist/index.html) 
 
 
 ## Derivation mechanism
 
-Note: This implementation follows SLIP-0010 https://github.com/satoshilabs/slips/blob/master/slip-0010.md
+Note: This implementation follows SLIP-0010 [https://github.com/satoshilabs/slips/blob/master/slip-0010.md](https://github.com/satoshilabs/slips/blob/master/slip-0010.md)
 
 
 BIP 39 mnemonic (12 or more words) => seed (512 bits, 64 bytes)
@@ -49,7 +49,7 @@ See test directory for API and sample use.
 
 Validated against from SLIP-0010 test vectors 
 
-https://github.com/satoshilabs/slips/blob/master/slip-0010.md
+[https://github.com/satoshilabs/slips/blob/master/slip-0010.md](https://github.com/satoshilabs/slips/blob/master/slip-0010.md)
 
 ## Changelog
 

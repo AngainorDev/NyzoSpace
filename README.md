@@ -11,9 +11,9 @@ A HD Wallet also saves you storage space ;)
 ## Current state
 
 Functional, validates SLIP0010.  
-See https://angainordev.github.io/NyzoSpace/doc/ for more.
+See [https://angainordev.github.io/NyzoSpace/doc/](https://angainordev.github.io/NyzoSpace/doc/) for more.
 
-Auto build Github pages version: https://angainordev.github.io/NyzoSpace/js/dist/index.httml 
+Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dist/index.html](https://angainordev.github.io/NyzoSpace/js/dist/index.html) 
 
 ## Roadmap
 
