@@ -1,5 +1,6 @@
 
-const { sign, box, secretbox, randomBytes } = require("tweetnacl")
+//const { sign, box, secretbox, randomBytes } = require('tweetnacl')
+const { sign } = require('tweetnacl')
 const createHash = require('create-hash')
 const createHmac = require('create-hmac')
 // const { decodeUTF8, encodeUTF8, encodeBase64, decodeBase64 } = require("tweetnacl-util")
@@ -7,11 +8,16 @@ const createHmac = require('create-hmac')
 const bip39 = require('bip39');
 // const crypto = require("crypto");
 
-const { NyzoFormat } = require("./NyzoFormat")
+const { NyzoFormat } = require('./NyzoFormat')
 nyzoFormat = new NyzoFormat()
 
-const DEFAULT_PASSWORD = "NYZO_ROCKS!"
+const DEFAULT_PASSWORD = 'NYZO_ROCKS!'
 
+// SLIP-0010
+const CURVE_KEY = 'ed25519 seed'
+
+// ed25519 only uses hardened childs
+const HARDENED_OFFSET = 0x80000000;
 
 function nyzoSeedToHexString(nyzoSeed) {
   return nyzoSeed.split('-').join('').slice(0, 64)
@@ -43,17 +49,30 @@ NyzoKey.prototype.toSeedHexWithDashes = function() {
 NyzoKey.prototype.fromBIP39 = function (passPhrase, password='') {
     // HD Wallet from BIP39 - Uses seed and chainCode for derivation
     if (password == '') password = DEFAULT_PASSWORD
-    let seed512 = bip39.mnemonicToSeedSync(passPhrase, password)  // This is a buffer
-    // seed256 = createHash('sha256').update(seed512).digest()
-    this.seed = seed512.slice(0, 32)
-    this.chainCode = seed512.slice(32)
+    const seed512 = bip39.mnemonicToSeedSync(passPhrase, password)  // This is a buffer
+    const I = createHmac('sha512', Buffer.from(CURVE_KEY)).update(seed512).digest()
+    this.seed = I.slice(0, 32)
+    this.chainCode = I.slice(32)
     this.keyPair = sign.keyPair.fromSeed(this.seed)
     return this
 }
 
 
-NyzoKey.prototype.derive = function (index) {
+NyzoKey.prototype.fromSLIP10Seed = function (seed512Hex) {
+    // HD Wallet from BIP39 - Uses hexseed to match official test vectors
+    const seed512 = Buffer.from(seed512Hex.slice(0, 128), 'hex')
+    const I = createHmac('sha512', Buffer.from(CURVE_KEY)).update(seed512).digest()
+    this.seed = I.slice(0, 32)
+    this.chainCode = I.slice(32)
+    this.keyPair = sign.keyPair.fromSeed(this.seed)
+    return this
+}
+
+
+NyzoKey.prototype.derive = function (index, hardened=true) {
     // Returns derived key at index
+    if (hardened) index += HARDENED_OFFSET  // Harden by default, because ed25519
+    if (index < HARDENED_OFFSET) throw new Error('Invalid derivation index');
     const indexBuffer = Buffer.allocUnsafe(4)
     indexBuffer.writeUInt32BE(index, 0)
     // key = Buffer.from(this.toSeedHex, 'hex')
@@ -99,7 +118,21 @@ NyzoKey.prototype.toPubKeyHexWithDashes = function () {
 }
 
 
+NyzoKey.prototype.toPrivKeyHex = function () {
+    return Buffer.from(this.keyPair.secretKey).toString('hex')
+}
+
+
+NyzoKey.prototype.toPrivKeyHexWithDashes = function () {
+    return nyzoFormat.hexStringFromArrayWithDashes(this.keyPair.secretKey, 0, 64)
+}
+
+
+NyzoKey.prototype.toChainCodeHex = function () {
+    return this.chainCode.toString('hex')
+}
+
 module.exports = {
-    version: "0.0.4",
+    version: "0.0.5",
     NyzoKey
 }

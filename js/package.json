@@ -1,8 +1,11 @@
 {
-  "name": "js",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "name": "nyzospace",
+  "version": "0.0.5",
+  "description": "Nyzo HD Wallet based upon ed25519 crypto",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "dependencies": {
     "bip39": "^3.0.2",
     "create-hash": "^1.2.0",
@@ -16,16 +19,22 @@
     "http-server": "^0.11.1",
     "jest": "^24.9.0",
     "webpack": "^4.40.2",
-    "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
     "build": "webpack --display-modules",
     "serve": "http-server dist",
-    "analyze": "webpack-bundle-analyzer dist/BundleAnalyser.stats.json",
     "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngainorDev/NyzoSpace.git"
   },
   "keywords": ["Nyzo", "Crypto-currency", "blockchain", "HD wallet"],
   "author": "Angainor",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngainorDev/NyzoSpace/issues"
+  },
+  "homepage": "https://github.com/AngainorDev/NyzoSpace#readme"
 }
