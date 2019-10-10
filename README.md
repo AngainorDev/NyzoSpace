@@ -9,3 +9,5 @@ HD Wallet generation for Bitcoin is described in BIP32.
 A HD Wallet also saves you storage space ;)
 
 ## WIP
+
+See doc for more.
