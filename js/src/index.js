@@ -3,11 +3,23 @@ console.log("Hello Nyzo!")
 const bip39 = require("bip39")
 const { NyzoKey } = require("./NyzoKey")
 
-function generate_mnemonic() {
-  const mnemonic = bip39.generateMnemonic(128)
+
+function generate_mnemonic(bits=128) {
+  const mnemonic = bip39.generateMnemonic(bits)
   const element = document.querySelector("#BIP39-input")
   element.value = mnemonic
 }
+
+
+function generate_mnemonic12() {
+    generate_mnemonic(128)
+}
+
+
+function generate_mnemonic24() {
+    generate_mnemonic(256)
+}
+
 
 function getKeyRow(index, seed, address, paperCode, extraClass='') {
     return  `
@@ -57,5 +69,6 @@ function generate_addresses() {
     wrapper.innerHTML = content
 }
 
-document.querySelector("#generate_mnemonic").addEventListener("click", generate_mnemonic)
+document.querySelector("#generate_mnemonic12").addEventListener("click", generate_mnemonic12)
+document.querySelector("#generate_mnemonic24").addEventListener("click", generate_mnemonic24)
 document.querySelector("#generate_addresses").addEventListener("click", generate_addresses)
