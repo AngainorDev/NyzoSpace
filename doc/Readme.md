@@ -57,3 +57,9 @@ https://github.com/satoshilabs/slips/blob/master/slip-0010.md
 - v0.2: Move to tweetnacl
 - V0.1: Init tests
 
+## Donation address
+
+Donations will help us maintain and improve this tool and other ones
+
+Nyzo public id:  
+77970524776adbe8-9842f4e6ad82984e-f3cad89bed86658d-4c48ff1bee26e4e2
