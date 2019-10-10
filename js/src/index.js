@@ -9,17 +9,38 @@ function generate_mnemonic() {
   element.value = mnemonic
 }
 
-function getKeyRow(index, seed, address, paperCode) {
+function getKeyRow(index, seed, address, paperCode, extraClass='') {
     return  `
-        <div class="col-12 col-md-4 col-xl-6">
+        <div class="col-12">
           <form>
-            Seed ${index}<input type="TEXT" class="form-control" value="${seed}"><br />
-            Public Id ${index}<input type="TEXT" class="form-control" value="${address}"><br />
-            paperCode ${index}<input type="TEXT" class="form-control" value="${paperCode}"><br />
+            Seed ${index}: <input type="TEXT" class="form-control" value="${seed}"> Public Id ${index}: <input type="TEXT" class="form-control" value="${address}"><br />
+            paperCode ${index}: <input type="TEXT" class="form-control" value="${paperCode}"><br />
           </form>
         </div>
     `
 }
+
+
+function getKeyRow2(index, seed, address, paperCode, tHeadClass='') {
+    return  `
+        <div class="col-12">
+          <table class="table">
+          <thead class="${tHeadClass}">
+            <tr>
+              <th>Seed ${index}</th><th>Public Id ${index}</th>
+            </tr>
+          </thead>
+            <tr>
+              <td>${seed}</td><td>${address}</td>
+            </tr>
+            <tr>
+                <td colspan="2">paperCode ${index}: <input type="TEXT" class="form-control" value="${paperCode}"></td>
+            </tr>
+          </table>
+        </div>
+    `
+}
+
 
 function generate_addresses() {
     const mnemonic = document.querySelector("#BIP39-input").value.trim()
@@ -27,9 +48,11 @@ function generate_addresses() {
     const count = parseInt(document.querySelector("#BIP39-count").value, 10)
     const wrapper = document.querySelector("#addresses")
     let content = ''
+    let extraClass=''
     for (i=1; i<=count; i++) {
         derived = MasterKey.derive(i)
-        content += getKeyRow(i, derived.toSeedHexWithDashes(), derived.toPubKeyHexWithDashes() , derived.toPaperCode())
+        content += getKeyRow2(i, derived.toSeedHexWithDashes(), derived.toPubKeyHexWithDashes() , derived.toPaperCode(), extraClass)
+        if (extraClass =='') {extraClass = 'thead-light'} else {extraClass = ''}
     }
     wrapper.innerHTML = content
 }

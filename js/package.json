@@ -25,7 +25,7 @@
     "analyze": "webpack-bundle-analyzer dist/BundleAnalyser.stats.json",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Nyzo", "Crypto-currency", "blockchain", "HD wallet"],
+  "author": "Angainor",
   "license": "ISC"
 }
