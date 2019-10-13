@@ -11,6 +11,10 @@ const bip39 = require('bip39');
 const { NyzoFormat } = require('./NyzoFormat')
 nyzoFormat = new NyzoFormat()
 
+const { NyzoStringPublicIdentifier } = require("nyzostrings/src/NyzoStringPublicIdentifier.js")
+const { NyzoStringPrivateSeed } = require("nyzostrings/src/NyzoStringPrivateSeed.js")
+const { nyzoStringEncoder } = require("nyzostrings/src/NyzoStringEncoder.js")
+
 const DEFAULT_PASSWORD = 'NYZO_ROCKS!'
 
 // SLIP-0010
@@ -38,6 +42,20 @@ function NyzoKey(nyzoSeed) {
 
 NyzoKey.prototype.toSeedHex = function() {
     return nyzoFormat.hexStringFromArray(this.seed)
+}
+
+
+NyzoKey.prototype.toNyzoPrivateSeed = function() {
+    const stringObject = new NyzoStringPrivateSeed(this.seed)
+    const string = nyzoStringEncoder.encode(stringObject)
+    return string
+}
+
+
+NyzoKey.prototype.toNyzoPublicIdentifier = function() {
+    const stringObject = new NyzoStringPublicIdentifier(this.keyPair.publicKey)
+    const string = nyzoStringEncoder.encode(stringObject)
+    return string
 }
 
 
@@ -133,6 +151,6 @@ NyzoKey.prototype.toChainCodeHex = function () {
 }
 
 module.exports = {
-    version: "0.0.5",
+    version: "0.0.6",
     NyzoKey
 }

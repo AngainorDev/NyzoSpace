@@ -33,20 +33,23 @@ function getKeyRow(index, seed, address, paperCode, extraClass='') {
 }
 
 
-function getKeyRow2(index, seed, address, paperCode, tHeadClass='') {
+function getKeyRow2(index, seed, nyzoSeed, address, nyzoAddress, paperCode, tHeadClass='') {
     return  `
         <div class="col-12">
           <table class="table">
           <thead class="${tHeadClass}">
             <tr>
-              <th>Seed ${index}</th><th>Public Id ${index}</th>
+              <th>&nbsp;</th><th>Seed ${index}</th><th>Public Id ${index}</th>
             </tr>
           </thead>
             <tr>
-              <td>${seed}</td><td>${address}</td>
+              <td>Raw</td><td>${seed}</td><td>${address}</td>
             </tr>
             <tr>
-                <td colspan="2">paperCode ${index}: <input type="TEXT" class="form-control" value="${paperCode}"></td>
+              <td>NyzoString</td><td>${nyzoSeed}</td><td>${nyzoAddress}</td>
+            </tr>
+            <tr>
+                <td colspan="3">paperCode ${index}: <input type="TEXT" class="form-control" value="${paperCode}"></td>
             </tr>
           </table>
         </div>
@@ -63,7 +66,9 @@ function generate_addresses() {
     let extraClass=''
     for (i=1; i<=count; i++) {
         derived = MasterKey.derive(i)
-        content += getKeyRow2(i, derived.toSeedHexWithDashes(), derived.toPubKeyHexWithDashes() , derived.toPaperCode(), extraClass)
+        content += getKeyRow2(i, derived.toSeedHexWithDashes(), derived.toNyzoPrivateSeed(),
+                                 derived.toPubKeyHexWithDashes(), derived.toNyzoPublicIdentifier(),
+                                 derived.toPaperCode(), extraClass)
         if (extraClass =='') {extraClass = 'thead-light'} else {extraClass = ''}
     }
     wrapper.innerHTML = content

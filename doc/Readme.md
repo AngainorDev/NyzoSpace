@@ -11,6 +11,8 @@ JS Port.
 - Convert any seed into a BIP39 mnemonic (paperCode) and back.
 - Usual operations on keys, incl. derivation and several formats.
 - conforms to SLIP-0010 
+- Relies on audited tweetnacl module for ed25519 crypto.
+- Supports Nyzo Strings
 
 Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dist/index.html](https://angainordev.github.io/NyzoSpace/js/dist/index.html) 
 
@@ -53,6 +55,7 @@ Validated against from SLIP-0010 test vectors
 
 ## Changelog
 
+- v0.6: Uses NyzoStrings module to produce also seed and public id in the required format.
 - v0.5: Matches SLIP-0010 test vectors
 - v0.4: Doc and GUI work
 - v0.3: Derivation

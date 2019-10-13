@@ -13,12 +13,14 @@ A HD Wallet also saves you storage space ;)
 Functional, validates SLIP0010.  
 See [https://angainordev.github.io/NyzoSpace/doc/](https://angainordev.github.io/NyzoSpace/doc/) for more.
 
-Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dist/index.html](https://angainordev.github.io/NyzoSpace/js/dist/index.html) 
+Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dist/index.html](https://angainordev.github.io/NyzoSpace/js/dist/index.html)
+
+Integrates Nyzo Strings format via NyzoStrings Js implementation https://www.npmjs.com/package/nyzostrings
 
 ## Roadmap
 
 - Improve GUI
-- Integrate NyzoString formats
+- ~~Integrate NyzoString formats~~
 - Generate Paper wallets
 - Trezor integration
 

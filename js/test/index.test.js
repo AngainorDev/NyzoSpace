@@ -2,6 +2,10 @@
 const { NyzoFormat } = require("../src/NyzoFormat")
 const { NyzoKey } = require("../src/NyzoKey")
 
+const { NyzoStringPublicIdentifier } = require("nyzostrings/src/NyzoStringPublicIdentifier.js")
+const { NyzoStringPrivateSeed } = require("nyzostrings/src/NyzoStringPrivateSeed.js")
+const { nyzoStringEncoder } = require("nyzostrings/src/NyzoStringEncoder.js")
+
 const sampleWalletMnemonic1 = 'logic easily waste eager injury oval sentence wine bomb embrace gossip supreme'
 const sampleSeed1 = '75d66f15555da95f-c259437726de6006-fb62d8dd5d5fa8f0-7cc2b089795b21b7'
 const samplePaperCode1 = 'desert buyer drastic hint case bargain interest allow basket cruise yellow machine rich victory option canvas muscle isolate normal loan imitate usage fatal boss'
@@ -29,16 +33,16 @@ nyzoFormat = new NyzoFormat()
 describe("Seed Tests", () => {
   test("Convert mnemonic1 to root keypair", () => {
     const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic1)
-    console.log("Seed1", parentKey.toSeedHexWithDashes())
+    //console.log("Seed1", parentKey.toSeedHexWithDashes())
     // console.log("Hex", parentKey.toPubKeyHex())
-    console.log("Hex/dashes1", parentKey.toPubKeyHexWithDashes())
+    //console.log("Hex/dashes1", parentKey.toPubKeyHexWithDashes())
     expect(parentKey.toSeedHexWithDashes()).toBe(sampleSeed1)
     expect(parentKey.toPubKeyHexWithDashes()).toBe(samplePub1)
   })
   test("Convert mnemonic2 to root keypair", () => {
     const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic2)
-    console.log("Seed2", parentKey.toSeedHexWithDashes())
-    console.log("Hex/dashes2", parentKey.toPubKeyHexWithDashes())
+    //console.log("Seed2", parentKey.toSeedHexWithDashes())
+    //console.log("Hex/dashes2", parentKey.toPubKeyHexWithDashes())
     expect(parentKey.toSeedHexWithDashes()).toBe(sampleSeed2)
     expect(parentKey.toPubKeyHexWithDashes()).toBe(samplePub2)
   })
@@ -142,6 +146,28 @@ describe("Derivation Tests slip-0010", () => {
     expect(derived.toChainCodeHex()).toBe('0b78a3226f915c082bf118f83618a618ab6dec793752624cbeb622acb562862d')
     expect(derived.toSeedHex()).toBe('1559eb2bbec5790b0c65d8693e4d0875b1747f4970ae8b650486ed7470845635')
     expect(derived.toPubKeyHex()).toBe('86fab68dcb57aa196c77c5f264f215a112c22a912c10d123b0d03c3c28ef1037')
+  })
+})
+
+
+describe("Nyzo Strings Tests", () => {
+  test("Nyzo Seed and pubkey 1",  () => {
+    const nyzoKey = new NyzoKey(nyzoSeed1)
+    const nyzoSeed = nyzoKey.toNyzoPrivateSeed()
+    // console.log(nyzoSeed)
+    expect(nyzoSeed).toBe('key_8000000000004h4h4h4h4h4z8z8z8z8z8AcRcRcRcRcR3ry0ZHS5')
+    const nyzoPublic = nyzoKey.toNyzoPublicIdentifier()
+    // console.log(nyzoPublic)
+    expect(nyzoPublic).toBe('id__80LAkru6e5aH3IG94pLiIX0YZwmGtcjrJpm0UEt2HIDsCCL5S3XT')
+  })
+  test("Nyzo Seed and pubkey 2",  () => {
+    const nyzoKey = new NyzoKey(sampleSeed2)
+    const nyzoSeed = nyzoKey.toNyzoPrivateSeed()
+    // console.log(nyzoSeed)
+    expect(nyzoSeed).toBe('key_8chVMmrtL6W9qTi4H09HqTuw1JGHf49-mN9hzJ_VIQXkQyJhG8ei')
+    const nyzoPublic = nyzoKey.toNyzoPublicIdentifier()
+    // console.log(nyzoPublic)
+    expect(nyzoPublic).toBe('id__82HfNecIc3zC5~jXrvRogqA-wIZMr2_E53cJTMvG8AxJ3GRqsZ7W')
   })
 })
 
