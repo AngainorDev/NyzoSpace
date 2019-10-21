@@ -4,8 +4,8 @@ const bip39 = require("bip39")
 const QRCode = require('easyqrcodejs')
 const { NyzoKey } = require("./NyzoKey")
 
-import logo from './id60.png'
-import nyzo512 from './nyzo512b.png'
+import logo from './img/ID_80x80.png'
+import nyzo512 from './img/nyzo512b.png'
 
 
 function generate_mnemonic(bits=128) {
