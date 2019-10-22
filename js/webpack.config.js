@@ -3,12 +3,20 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {main : ["./src/index.js"],
+          convert: ["./src/convert.js"]} ,
   target: "web",
   plugins: [
     new webpack.IgnorePlugin(/^\.\/wordlists\/(?!english)/, /bip39\/src$/),
     new HtmlWebpackPlugin({
-      template: "src/index.html"
+      filename: "index.html",
+      template: "src/index.html",
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      filename: "convert.html",
+      template: "src/convert.html",
+      chunks: ['convert']
     })
   ],
  module: {
@@ -24,7 +32,7 @@ module.exports = {
 
   mode: "development",
   output: {
-    filename: "main.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist")
   }
 };

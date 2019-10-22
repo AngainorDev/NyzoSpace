@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Nyzo Space - HD Wallet for Nyzo</title>
+    <title>Nyzo Space - Convert tools</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
@@ -14,37 +14,40 @@
 
       <div class="row" style="margin-bottom:10px;margin-top:10px;">
         <div class="col-6">
-          <a href="index.html" class="btn btn-warning">HD Wallet</a>
-          <a href="convert.html" class="btn btn-success">Conversion tool</a>
+          <a href="index.html" class="btn btn-success">HD Wallet</a>
+          <a href="convert.html" class="btn btn-warning">Conversion tool</a>
           <!-- a href="paper.html" class="btn btn-success">Paper Wallet</a -->
         </div>
       </div>
 
-    <h1>Nyzo Space - HD Wallets (Beta)</h1>
+
+    <h1>Nyzo Space - Convert Nyzo Addresses</h1>
       <div class="row">
         <div class="col-12 col-md-4 col-xl-6">
           <form>
-            <label for="BIP39-input">BIP39 Mnemonic</label>
-            <input type="TEXT" class="form-control" id="BIP39-input" placeholder="Mnemonic" aria-label="BIP39  Mnemonic" autocomplete="off" data-docs-version="4.3">
-            <button class="btn btn-primary" type="button" id="generate_mnemonic12">Generate (12 words)</button>
-            <button class="btn btn-primary" type="button" id="generate_mnemonic24">Generate (24 words)</button>
-            <br />
-            <label for="BIP39-count">Addresses count</label>
-            <input type="NUMBER" class="form-control" id="BIP39-count" placeholder="10" aria-label="Addresses Count" autocomplete="off" value="10">
-              <br />
-            <button class="btn btn-primary" type="button" id="generate_addresses">Get Addresses</button>
+           <label for="ns-input">NyzoString (id__ or key_)</label>
+            <input type="TEXT" class="form-control" id="ns-input" placeholder="" aria-label="NyzoString" autocomplete="off" data-docs-version="4.3">
+            <button class="btn btn-primary" type="button" id="generate_from_ns">Generate legacy Hex string</button>
+            <br />&nbsp;<br />
+            <label for="pubk-input">Legacy Public Id</label>
+            <input type="TEXT" class="form-control" id="pubk-input" placeholder="0000000000000000-0000000000000000-0000000000000000-0000000000000000" aria-label="PubKey" autocomplete="off" data-docs-version="4.3">
+            <button class="btn btn-primary" type="button" id="generate_from_pubk">Generate nyzoString</button>
+            <br />&nbsp;<br />
+            <label for="privk-input">Legacy Private Key</label>
+            <input type="TEXT" class="form-control" id="privk-input" placeholder="0000000000000000-0000000000000000-0000000000000000-0000000000000000" aria-label="PrivKey" autocomplete="off" data-docs-version="4.3">
+            <button class="btn btn-primary" type="button" id="generate_from_privk">Generate nyzoStrings</button>
           </form>
         </div>
       </div>
     <br />&nbsp;<br/>
       <div class="row">
         <div class="col-12 col-md-4 col-xl-6">
-            Nyzo HD Wallet courtesy of Angainor<br/>
+            Nyzo HD Wallet courtesy of Angainor - With @JimTalksData additions<br/>
             <small>MIT Licence: do what you want, provided you keep the credits.</small>
         </div>
       </div>
     <br />&nbsp;<br/>
-    <div class="row" id="addresses">
+    <div class="row" id="output">
 
     </div>
  </div>
@@ -54,5 +57,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script -->
 
-  <script type="text/javascript" src="main.js"></script></body>
+  </body>
 </html>

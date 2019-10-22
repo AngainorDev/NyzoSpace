@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -855,6 +855,18 @@ eval("/* WEBPACK VAR INJECTION */(function(Buffer) {\n//const { sign, box, secre
 
 /***/ }),
 
+/***/ "./src/convert.js":
+/*!************************!*\
+  !*** ./src/convert.js ***!
+  \************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./img/ID_80x80.png */ \"./src/img/ID_80x80.png\");\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./img/KEY_80x80.png */ \"./src/img/KEY_80x80.png\");\n/* harmony import */ var _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./img/nyzo512b.png */ \"./src/img/nyzo512b.png\");\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2__);\n\nconst QRCode = __webpack_require__(/*! easyqrcodejs */ \"./node_modules/easyqrcodejs/dist/easy.qrcode.min.js\")\nconst { NyzoKey } = __webpack_require__(/*! ./NyzoKey */ \"./src/NyzoKey.js\")\n\n\n\n\n\n\nfunction getQRConfig(text, logo) {\n    return { text: text, // Content\n\t\t\t\t\t\twidth: 240, // Width\n\t\t\t\t\t\theight: 240, // Height\n\t\t\t\t\t\tcolorDark: \"#000000\", // Dark color\n\t\t\t\t\t\tcolorLight: \"#ffffff\", // Light color\n\t\t\t\t\t\tPO: '#630900', // Global Position Outer color. if not set, the defaut is `colorDark`\n\t\t\t\t\t\tPI: '#630900',\n\t\t\t\t\t\tquietZone: 0,\n\t\t\t\t\t\tlogo: logo, // LOGO\n\t\t\t\t\t\tlogoBackgroundTransparent: true, // Whether use transparent image, default is false\n\t\t\t\t\t\tbackgroundImage: _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2___default.a,\n\t\t\t\t\t\tbackgroundImageAlpha: 0.3,\n\t\t\t\t\t\tautoColor: false,\n\t\t\t\t\t\tcorrectLevel: QRCode.CorrectLevel.M // L, M, Q, H - don't use L, not enough dup info to allow for the logo\n\t\t\t\t\t\t}}\n\n\nfunction mapToTable(map, tHeadClass='') {\n    let out = '<div class=\"col-12\"><table class=\"table\">'\n    //let td =  '<td rowspan=\"'+Object.keys(map).length+'\"><div class=\"qr\" id=\"qrcode\"></div></td>'\n    let td = ''\n    let qr = ''\n    for (var key in map) {\n        const value = map[key]\n        qr = ''\n        if (key == 'Private Key') { qr = '<div class=\"qr\" style=\"margin:20px;\" id=\"qrcode_private\"></div'}\n        if (key == 'Public Id') { qr = '<div class=\"qr\" style=\"margin:20px;\" id=\"qrcode_public\"></div'}\n        out +=  '<tr><td>'+key+'</td><td><input type=\"text\" style=\"width:100%\" value=\"'+value+'\">'+qr+'</td>'+td+'</tr>'\n        td = ''\n    }\n    out += \"</table></div>\"\n    return out\n}\n\n\nfunction generate_from_privk() {\n    const legacy_key = document.querySelector(\"#privk-input\").value.trim()\n    const key = new NyzoKey(legacy_key)\n    const outMap = {\"Legacy Private Key\": legacy_key,\n    \"Private Key\": key.toNyzoPrivateSeed(),\n    \"Public Id\": key.toNyzoPublicIdentifier()\n    }\n    const wrapper = document.querySelector(\"#output\")\n    wrapper.innerHTML = mapToTable(outMap)\n    let qr = new QRCode(document.getElementById(\"qrcode_private\"), getQRConfig(key.toNyzoPrivateSeed(), _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1___default.a))\n    let qr2 = new QRCode(document.getElementById(\"qrcode_public\"), getQRConfig(key.toNyzoPublicIdentifier(), _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default.a))\n}\n\n\nfunction generate_from_pubk() {\n    const legacy_public = document.querySelector(\"#pubk-input\").value.trim()\n    const key = new NyzoKey()\n    const outMap = {\"Legacy Public Key\": legacy_public,\n    \"Public Id\": key.LegacyPubKeyToNyzoString(legacy_public)\n    }\n    const wrapper = document.querySelector(\"#output\")\n    wrapper.innerHTML = mapToTable(outMap)\n    let qr = new QRCode(document.getElementById(\"qrcode_public\"), getQRConfig(key.LegacyPubKeyToNyzoString(legacy_public), _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default.a))\n}\n\n\nfunction generate_from_ns() {\n    const nyzoString = document.querySelector(\"#ns-input\").value.trim()\n    const key = new NyzoKey()\n    const list = key.NyzoStringToLegacy(nyzoString)\n    const name = list[0]\n    const value = list[1]\n    let outMap\n    if (name == 'Private Key') {\n        const key2 = new NyzoKey(value)\n        outMap = {\"Nyzo String\": nyzoString,\n        [`${name}`]: value,\n        \"Public Id\": key2.toNyzoPublicIdentifier()}\n    }  else {\n        outMap = {\"Nyzo String\": nyzoString, [`${name}`]: value}\n    }\n    const wrapper = document.querySelector(\"#output\")\n    wrapper.innerHTML = mapToTable(outMap)\n    if (list[0] == 'Private Key') {\n        let qr = new QRCode(document.getElementById(\"qrcode_private\"), getQRConfig(list[1], _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1___default.a))\n    }\n    let qr2 = new QRCode(document.getElementById(\"qrcode_public\"), getQRConfig(list[1], _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default.a))\n\n}\n\n\ndocument.querySelector(\"#generate_from_privk\").addEventListener(\"click\", generate_from_privk)\ndocument.querySelector(\"#generate_from_pubk\").addEventListener(\"click\", generate_from_pubk)\ndocument.querySelector(\"#generate_from_ns\").addEventListener(\"click\", generate_from_ns)\n\n\n//# sourceURL=webpack:///./src/convert.js?");
+
+/***/ }),
+
 /***/ "./src/img/ID_80x80.png":
 /*!******************************!*\
   !*** ./src/img/ID_80x80.png ***!
@@ -866,6 +878,17 @@ eval("module.exports = __webpack_require__.p + \"21c8040c49164dc8ece766fcc710c4f
 
 /***/ }),
 
+/***/ "./src/img/KEY_80x80.png":
+/*!*******************************!*\
+  !*** ./src/img/KEY_80x80.png ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"21cf20bbf01be07f31dd085e95e90600.png\";\n\n//# sourceURL=webpack:///./src/img/KEY_80x80.png?");
+
+/***/ }),
+
 /***/ "./src/img/nyzo512b.png":
 /*!******************************!*\
   !*** ./src/img/nyzo512b.png ***!
@@ -874,29 +897,6 @@ eval("module.exports = __webpack_require__.p + \"21c8040c49164dc8ece766fcc710c4f
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("module.exports = __webpack_require__.p + \"72779fa4920ee6c74d16b9535dee724e.png\";\n\n//# sourceURL=webpack:///./src/img/nyzo512b.png?");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./img/ID_80x80.png */ \"./src/img/ID_80x80.png\");\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./img/nyzo512b.png */ \"./src/img/nyzo512b.png\");\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_1__);\nconsole.log(\"Hello Nyzo!\")\n\nconst bip39 = __webpack_require__(/*! bip39 */ \"./node_modules/bip39/src/index.js\")\nconst QRCode = __webpack_require__(/*! easyqrcodejs */ \"./node_modules/easyqrcodejs/dist/easy.qrcode.min.js\")\nconst { NyzoKey } = __webpack_require__(/*! ./NyzoKey */ \"./src/NyzoKey.js\")\n\n\n\n\n\nfunction generate_mnemonic(bits=128) {\n  const mnemonic = bip39.generateMnemonic(bits)\n  const element = document.querySelector(\"#BIP39-input\")\n  element.value = mnemonic\n}\n\n\nfunction generate_mnemonic12() {\n    generate_mnemonic(128)\n}\n\n\nfunction generate_mnemonic24() {\n    generate_mnemonic(256)\n}\n\n\nfunction getKeyRow(index, seed, address, paperCode, extraClass='') {\n    return  `\n        <div class=\"col-12\">\n          <form>\n            Seed ${index}: <input type=\"TEXT\" class=\"form-control\" value=\"${seed}\"> Public Id ${index}: <input type=\"TEXT\" class=\"form-control\" value=\"${address}\"><br />\n            paperCode ${index}: <input type=\"TEXT\" class=\"form-control\" value=\"${paperCode}\"><br />\n          </form>\n        </div>\n    `\n}\n\n\nfunction getKeyRow2(index, seed, nyzoSeed, address, nyzoAddress, paperCode, tHeadClass='') {\n    return  `\n        <div class=\"col-12\">\n          <table class=\"table\">\n          <thead class=\"${tHeadClass}\">\n            <tr>\n              <th>&nbsp;</th><th>Seed ${index}</th><th>Public Id ${index}</th>\n            </tr>\n          </thead>\n            <tr>\n              <td>Raw</td><td>${seed}</td><td>${address}</td>\n            </tr>\n            <tr>\n              <td>NyzoString</td><td>${nyzoSeed}</td><td>${nyzoAddress}</td>\n            </tr>\n            <tr>\n                <td colspan=\"3\">paperCode ${index}: <input type=\"TEXT\" class=\"form-control\" value=\"${paperCode}\"></td>\n            </tr>\n          </table>\n        </div>\n    `\n}\n\nfunction getKeyRowWithQR(index, seed, nyzoSeed, address, nyzoAddress, paperCode, tHeadClass='') {\n    return  `\n        <div class=\"col-12\">\n          <table class=\"table\">\n          <thead class=\"${tHeadClass}\">\n            <tr>\n              <th>&nbsp;</th><th>Seed ${index}</th><th>Public Id ${index}</th><th>Address QR Code</th>\n            </tr>\n          </thead>\n            <tr>\n              <td>Raw</td><td>${seed}</td><td>${address}</td><td rowspan=\"3\"><div class=\"qr\" id=\"qrcode_${index}\"></div></td>\n            </tr>\n            <tr>\n              <td>NyzoString</td><td>${nyzoSeed}</td><td>${nyzoAddress}</td>\n            </tr>\n            <tr>\n                <td colspan=\"3\">paperCode ${index}: <input type=\"TEXT\" class=\"form-control\" value=\"${paperCode}\"></td>\n            </tr>\n          </table>\n        </div>\n    `\n}\n\n\n\nfunction generate_addresses() {\n    const mnemonic = document.querySelector(\"#BIP39-input\").value.trim()\n    const MasterKey = new NyzoKey().fromBIP39(mnemonic)\n    const count = parseInt(document.querySelector(\"#BIP39-count\").value, 10)\n    const wrapper = document.querySelector(\"#addresses\")\n    let content = ''\n    let extraClass=''\n    let ids = []\n    let i = 0\n    for (i=1; i<=count; i++) {\n        derived = MasterKey.derive(i)\n        content += getKeyRowWithQR(i, derived.toSeedHexWithDashes(), derived.toNyzoPrivateSeed(),\n                                 derived.toPubKeyHexWithDashes(), derived.toNyzoPublicIdentifier(),\n                                 derived.toPaperCode(), extraClass)\n        ids.push(derived.toNyzoPublicIdentifier())\n        if (extraClass =='') {extraClass = 'thead-light'} else {extraClass = ''}\n    }\n    wrapper.innerHTML = content\n    let config = { text: \"\", // Content\n\t\t\t\t\t\twidth: 240, // Width\n\t\t\t\t\t\theight: 240, // Height\n\t\t\t\t\t\t//colorDark: \"#630900\", // Dark color\n\t\t\t\t\t\tcolorDark: \"#000000\", // Dark color\n\t\t\t\t\t\tcolorLight: \"#ffffff\", // Light color\n\n\t\t\t\t\t\tPO: '#630900', // Global Position Outer color. if not set, the defaut is `colorDark`\n\t\t\t\t\t\tPI: '#630900',\n\n\n\t\t\t\t\t\tquietZone: 0,\n\t\t\t\t\t\t// === Logo\n\t\t\t\t\t\tlogo: _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default.a, // LOGO\n\t\t\t\t\t\t//\t\t\t\t\tlogo:\"http://127.0.0.1:8020/easy-qrcodejs/demo/logo.png\",\n\t\t\t\t\t\t//\t\t\t\t\tlogoWidth:80,\n\t\t\t\t\t\t//\t\t\t\t\tlogoHeight:80,\n\t\t\t\t\t\t//logoBackgroundColor: '#ffffff', // Logo background color, Invalid when `logBgTransparent` is true; default is '#ffffff'\n\t\t\t\t\t\tlogoBackgroundTransparent: true, // Whether use transparent image, default is false\n\t\t\t\t\t\tbackgroundImage: _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_1___default.a,\n\t\t\t\t\t\tbackgroundImageAlpha: 0.3,\n\t\t\t\t\t\tautoColor: false,\n\t\t\t\t\t\tcorrectLevel: QRCode.CorrectLevel.M // L, M, Q, H - don't use L, not enough dup info to allow for the logo\n\t\t\t\t\t\t}\n    for (i=1; i<=count; i++) {\n        config.text = ids[i-1]\n        let t = new QRCode(document.getElementById(\"qrcode_\" + i), config)\n    }\n}\n\ndocument.querySelector(\"#generate_mnemonic12\").addEventListener(\"click\", generate_mnemonic12)\ndocument.querySelector(\"#generate_mnemonic24\").addEventListener(\"click\", generate_mnemonic24)\ndocument.querySelector(\"#generate_addresses\").addEventListener(\"click\", generate_addresses)\n\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ 0:
-/*!****************************!*\
-  !*** multi ./src/index.js ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__(/*! ./src/index.js */\"./src/index.js\");\n\n\n//# sourceURL=webpack:///multi_./src/index.js?");
 
 /***/ }),
 
@@ -930,6 +930,17 @@ eval("/* (ignored) */\n\n//# sourceURL=webpack:///util_(ignored)?");
 /***/ (function(module, exports) {
 
 eval("/* (ignored) */\n\n//# sourceURL=webpack:///crypto_(ignored)?");
+
+/***/ }),
+
+/***/ 4:
+/*!******************************!*\
+  !*** multi ./src/convert.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! ./src/convert.js */\"./src/convert.js\");\n\n\n//# sourceURL=webpack:///multi_./src/convert.js?");
 
 /***/ })
 

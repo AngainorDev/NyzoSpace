@@ -17,6 +17,8 @@ Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dis
 
 Integrates Nyzo Strings format via NyzoStrings Js implementation https://www.npmjs.com/package/nyzostrings
 
+Now comes with a conversion tool as well.
+
 ## Roadmap
 
 - Improve GUI
@@ -28,7 +30,14 @@ Integrates Nyzo Strings format via NyzoStrings Js implementation https://www.npm
 
 Donations will help us maintain and improve this tool and other ones
 
-Nyzo public id:  
-77970524776adbe8-9842f4e6ad82984e-f3cad89bed86658d-4c48ff1bee26e4e2
+Nyzo Legacy public id:  
+`77970524776adbe8-9842f4e6ad82984e-f3cad89bed86658d-4c48ff1bee26e4e2`
 
+Legacy Image:  
 ![](https://github.com/AngainorDev/NyzoSpace/raw/master/angainor-pub.png)
+
+As Nyzo String:  
+`id__87vo1ihVrKMFD4bSXHU2D4ZRQKzsZpqCAkP8_PML9Ljzru.zFwbi`
+
+As NyzoString QR code:  
+![](https://github.com/AngainorDev/NyzoSpace/raw/master/angainor-pub-ns.png)

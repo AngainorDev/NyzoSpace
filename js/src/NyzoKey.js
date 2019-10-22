@@ -150,7 +150,31 @@ NyzoKey.prototype.toChainCodeHex = function () {
     return this.chainCode.toString('hex')
 }
 
+
+NyzoKey.prototype.LegacyPubKeyToNyzoString = function (legacyHex) {
+    const nyzoString = NyzoStringPublicIdentifier.fromHex(legacyHex)
+    return nyzoStringEncoder.encode(nyzoString)
+}
+
+
+NyzoKey.prototype.NyzoStringToLegacy = function (nyzoString) {
+    const keyObject = nyzoStringEncoder.decode(nyzoString)
+    if (keyObject == null) {
+		return(['Error', 'Not a nyzoString private or public key!'])
+	}
+	if (keyObject.constructor == NyzoStringPublicIdentifier) {
+		return(['Public Id', nyzoFormat.hexStringFromArrayWithDashes(keyObject.getIdentifier(), 0, 32)])
+	}
+	else if (keyObject.constructor == NyzoStringPrivateSeed) {
+		return(['Private Key', nyzoFormat.hexStringFromArrayWithDashes(keyObject.getSeed(), 0, 32)])
+	}
+	else {
+		return(['Error', 'Not a nyzoString private or public key!'])
+	}
+}
+
+
 module.exports = {
-    version: "0.0.6",
+    version: "0.0.7",
     NyzoKey
 }
