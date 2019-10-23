@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Nyzo Space - HD Wallet for Nyzo</title>
+    <title>Nyzo Space - Paper Wallet</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
@@ -14,37 +14,33 @@
 
       <div class="row" style="margin-bottom:10px;margin-top:10px;">
         <div class="col-6">
-          <a href="index.html" class="btn btn-warning">HD Wallet</a>
+          <a href="index.html" class="btn btn-success">HD Wallet</a>
           <a href="convert.html" class="btn btn-success">Conversion tool</a>
-          <a href="paper.html" class="btn btn-success">Paper Wallet</a>
+          <a href="paper.html" class="btn btn-warning">Paper Wallet</a>
         </div>
       </div>
 
-    <h1>Nyzo Space - HD Wallets (Beta)</h1>
+
+    <h1>Nyzo Space - Paper Wallet</h1>
       <div class="row">
         <div class="col-12 col-md-4 col-xl-6">
+            <h2>WIP - non functional yet</h2>
           <form>
-            <label for="BIP39-input">BIP39 Mnemonic</label>
-            <input type="TEXT" class="form-control" id="BIP39-input" placeholder="Mnemonic" aria-label="BIP39  Mnemonic" autocomplete="off" data-docs-version="4.3">
-            <button class="btn btn-primary" type="button" id="generate_mnemonic12">Generate (12 words)</button>
-            <button class="btn btn-primary" type="button" id="generate_mnemonic24">Generate (24 words)</button>
-            <br />
-            <label for="BIP39-count">Addresses count</label>
-            <input type="NUMBER" class="form-control" id="BIP39-count" placeholder="10" aria-label="Addresses Count" autocomplete="off" value="10">
-              <br />
-            <button class="btn btn-primary" type="button" id="generate_addresses">Get Addresses</button>
+           <label for="ns-input">NyzoString or BIP39 Papercode</label>
+            <input type="TEXT" class="form-control" id="ns-input" placeholder="id__" aria-label="NyzoString" autocomplete="off" data-docs-version="4.3">
+            <button class="btn btn-primary" type="button" id="generate_paper">Make Paper Wallet</button>
           </form>
         </div>
       </div>
     <br />&nbsp;<br/>
       <div class="row">
         <div class="col-12 col-md-4 col-xl-6">
-            Nyzo HD Wallet courtesy of Angainor<br/>
+            Nyzo Paper Wallet courtesy of Angainor <br/>
             <small>MIT Licence: do what you want, provided you keep the credits.</small>
         </div>
       </div>
     <br />&nbsp;<br/>
-    <div class="row" id="addresses">
+    <div class="row" id="output">
 
     </div>
  </div>

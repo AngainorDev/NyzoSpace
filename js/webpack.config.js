@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {main : ["./src/index.js"],
-          convert: ["./src/convert.js"]} ,
+          convert: ["./src/convert.js"],
+          paper: ["./src/paper.js"]} ,
   target: "web",
   plugins: [
     new webpack.IgnorePlugin(/^\.\/wordlists\/(?!english)/, /bip39\/src$/),
@@ -17,6 +18,11 @@ module.exports = {
       filename: "convert.html",
       template: "src/convert.html",
       chunks: ['convert']
+    }),
+    new HtmlWebpackPlugin({
+      filename: "paper.html",
+      template: "src/paper.html",
+      chunks: ['paper']
     })
   ],
  module: {
