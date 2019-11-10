@@ -75,21 +75,24 @@ function generate_from_ns() {
     const list = key.NyzoStringToLegacy(nyzoString)
     const name = list[0]
     const value = list[1]
+    let public_id = ''
     let outMap
     if (name == 'Private Key') {
         const key2 = new NyzoKey(value)
         outMap = {"Nyzo String": nyzoString,
         [`${name}`]: value,
         "Public Id": key2.toNyzoPublicIdentifier()}
+        public_id = key2.toNyzoPublicIdentifier()
     }  else {
         outMap = {"Nyzo String": nyzoString, [`${name}`]: value}
+        public_id = list[1]
     }
     const wrapper = document.querySelector("#output")
     wrapper.innerHTML = mapToTable(outMap)
     if (list[0] == 'Private Key') {
         let qr = new QRCode(document.getElementById("qrcode_private"), getQRConfig(list[1], logo_key))
     }
-    let qr2 = new QRCode(document.getElementById("qrcode_public"), getQRConfig(list[1], logo_id))
+    let qr2 = new QRCode(document.getElementById("qrcode_public"), getQRConfig(public_id, logo_id))
 
 }
 
