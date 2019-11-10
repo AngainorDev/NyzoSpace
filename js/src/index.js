@@ -5,7 +5,7 @@ const QRCode = require('easyqrcodejs')
 const { NyzoKey } = require("./NyzoKey")
 
 import logo from './img/ID_80x80.png'
-import nyzo512 from './img/nyzo512b.png'
+import nyzo512 from './img/nyzo512c.png'
 
 
 function generate_mnemonic(bits=128) {
@@ -123,7 +123,7 @@ function generate_addresses() {
 						//logoBackgroundColor: '#ffffff', // Logo background color, Invalid when `logBgTransparent` is true; default is '#ffffff'
 						logoBackgroundTransparent: true, // Whether use transparent image, default is false
 						backgroundImage: nyzo512,
-						backgroundImageAlpha: 0.3,
+						backgroundImageAlpha: 1,
 						autoColor: false,
 						correctLevel: QRCode.CorrectLevel.M // L, M, Q, H - don't use L, not enough dup info to allow for the logo
 						}
