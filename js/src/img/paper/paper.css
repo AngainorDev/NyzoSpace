@@ -35,7 +35,7 @@
     left: 0;}
 
 
-.qr, .qr canvas {
+.qr, .qr canvas, .qr img {
     width:150px;
     height:150px;
 }
