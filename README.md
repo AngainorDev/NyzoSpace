@@ -19,11 +19,13 @@ Integrates Nyzo Strings format via NyzoStrings Js implementation https://www.npm
 
 Now comes with a conversion tool as well.
 
+New: Paper wallets!
+
 ## Roadmap
 
 - Improve GUI
 - ~~Integrate NyzoString formats~~
-- Generate Paper wallets
+- ~~Generate Paper wallets~~
 - Trezor integration
 
 ## Donation address
