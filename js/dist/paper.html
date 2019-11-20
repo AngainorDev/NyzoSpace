@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Nyzo Space - Paper Wallet</title>
+    <title>Nyzo Space - Paper Wallet by Angainor Dev</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
 
   <body>
-  <div class="container-fluid">
+  <div class="container">
+
+      <div id="hide">
 
       <div class="row" style="margin-bottom:10px;margin-top:10px;">
         <div class="col-6">
@@ -24,10 +26,9 @@
     <h1>Nyzo Space - Paper Wallet</h1>
       <div class="row">
         <div class="col-12 col-md-4 col-xl-6">
-            <h2>WIP - non functional yet</h2>
           <form>
-           <label for="ns-input">NyzoString or BIP39 Papercode</label>
-            <input type="TEXT" class="form-control" id="ns-input" placeholder="id__" aria-label="NyzoString" autocomplete="off" data-docs-version="4.3">
+           <label for="ns-input">NyzoString key_</label>
+            <input type="TEXT" class="form-control" id="ns-input" placeholder="key_" aria-label="NyzoString" autocomplete="off" data-docs-version="4.3">
             <button class="btn btn-primary" type="button" id="generate_paper">Make Paper Wallet</button>
           </form>
         </div>
@@ -40,6 +41,7 @@
         </div>
       </div>
     <br />&nbsp;<br/>
+    </div>   <!-- hide -->
     <div class="row" id="output">
 
     </div>
