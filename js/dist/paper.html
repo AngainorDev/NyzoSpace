@@ -25,12 +25,18 @@
 
     <h1>Nyzo Space - Paper Wallet</h1>
       <div class="row">
-        <div class="col-12 col-md-4 col-xl-6">
+        <div class="col-6 col-md-6 col-xl-6">
           <form>
            <label for="ns-input">NyzoString key_</label>
             <input type="TEXT" class="form-control" id="ns-input" placeholder="key_" aria-label="NyzoString" autocomplete="off" data-docs-version="4.3">
+           <label for="wallet_template">Wallet template</label>
+            <select class="form-control" name="template" id="wallet_template">
+            </select>
             <button class="btn btn-primary" type="button" id="generate_paper">Make Paper Wallet</button>
           </form>
+        </div>
+        <div class="col-6 col-md-6 col-xl-6">
+          <img id="preview_img" />
         </div>
       </div>
     <br />&nbsp;<br/>

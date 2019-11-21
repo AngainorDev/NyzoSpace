@@ -21,6 +21,8 @@ Now comes with a conversion tool as well.
 
 New: Paper wallets! [https://angainordev.github.io/NyzoSpace/doc/paperwallet](https://angainordev.github.io/NyzoSpace/doc/paperwallet)
 
+New: Selectable wallet template
+
 ## Roadmap
 
 - Improve GUI

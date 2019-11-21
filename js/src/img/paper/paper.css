@@ -6,7 +6,7 @@
 }
 
 
-#print_paper { margin-top:20px; }
+#print_paper, #generate_paper { margin-top:20px; }
 
 
 .container {

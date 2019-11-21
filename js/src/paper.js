@@ -10,6 +10,10 @@ import paperbg from './img/paper/default/wallet.png'
 
 import './img/paper/paper.css'
 
+import getWalletsNames from './getWalletsNames'
+import lazyLoadImage from './lazyLoadImage';
+
+
 function getQRConfig(text, logo) {
     return { text: text, // Content
 						width: 240, // Width
@@ -69,8 +73,34 @@ function generate_paper() {
         let qr = new QRCode(document.getElementById("qrcode_private"), getQRConfig(nyzoString, logo_key))
     }
     let qr2 = new QRCode(document.getElementById("qrcode_public"), getQRConfig(public_id, logo_id))
+    const img = document.getElementById("paperbg")
+    lazyLoadImage(document.querySelector("#wallet_template").value, "wallet", img);
+}
 
+
+function template_changed() {
+    const select_elem = document.querySelector("#wallet_template")
+    //console.log(select_elem.value)
+    const img = document.getElementById("preview_img")
+    lazyLoadImage(document.querySelector("#wallet_template").value, "front", img);
+}
+
+function fill_select() {
+    const walletNames = getWalletsNames()
+    const select_elem = document.querySelector("#wallet_template")
+    walletNames.forEach((element, index) => {
+      const option_elem = document.createElement('option');
+      // Add index to option_elem
+      option_elem.value = element;
+      // Add element HTML
+      option_elem.textContent = element;
+      // Append option_elem to select_elem
+      select_elem.appendChild(option_elem);
+    });
 }
 
 
 document.querySelector("#generate_paper").addEventListener("click", generate_paper)
+fill_select()
+document.querySelector("#wallet_template").addEventListener("change", template_changed)
+template_changed()

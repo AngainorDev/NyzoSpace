@@ -221,7 +221,7 @@ eval("\nvar inherits = __webpack_require__(/*! inherits */ \"./node_modules/inhe
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"@media print\\n{\\n  body { -webkit-print-color-adjust: exact; width: 1010px; height: 427px;}\\n  #hide { display: none; }\\n  #print_paper { display: none; }\\n}\\n\\n\\n#print_paper { margin-top:20px; }\\n\\n\\n.container {\\n    min-width: 1010px;\\n    max-width: 1010px;\\n}\\n\\n\\n.output {\\n    min-width: 1010px;\\n    margin:0;\\n    padding:0;\\n}\\n\\n\\n#paperkeyarea { width:1010px;\\n    display:block;\\n    position:relative;\\n}\\n\\n\\n#paperbg {width:1010px;\\n    border: 0;\\n    margin: 0;\\n    padding: 0;\\n    left: 0;}\\n\\n\\n.qr, .qr canvas, .qr img {\\n    width:150px;\\n    height:150px;\\n}\\n\\n\\n.qr {\\n    -ms-transform: rotate(-90deg);\\n    -webkit-transform: rotate(-90deg);\\n    transform: rotate(-90deg);\\n}\\n\\n\\n#qrcode_private {\\n    top:37px;\\n    left: 420px;\\n    z-index:100;\\n    margin:0;\\n    float:none;\\n    display:block;\\n    position:absolute;\\n\\n}\\n\\n\\n#qrcode_public {\\n    top:245px;\\n    left: 772px;\\n    z-index:100;\\n    margin:0;\\n    float:none;\\n    display:block;\\n    position:absolute;\\n\\n}\\n\\n\\n#paper_priv {\\n    /*border:1px solid black;*/\\n    position: absolute;\\n    top: 86px;\\n    left: 552px;\\n    z-index: 100;\\n    font-size: 10px;\\n    background-color: transparent;\\n    font-weight: 100;\\n    color: #000000;\\n    margin: 0;\\n    width: 158px;\\n    height: 50px;\\n    text-align: center;\\n    word-wrap: break-word;\\n    font-family: Courier, monospace;\\n    -ms-transform: rotate(-90deg);\\n    -webkit-transform: rotate(-90deg);\\n    transform: rotate(-90deg);\\n    font-family: Courier, monospace;\\n}\\n\\n\\n#paper_pub {\\n    position: absolute;\\n    /*border:1px solid black;*/\\n    bottom: 82px;\\n    left: 894px;\\n    z-index: 100;\\n    font-size: 10px;\\n    background-color: transparent;\\n    font-weight: 100;\\n    color: #000000;\\n    margin: 0;\\n    width: 158px;\\n    height: 50px;\\n    text-align: center;\\n    word-wrap: break-word;\\n    font-family: Courier, monospace;\\n    -ms-transform: rotate(-90deg);\\n    -webkit-transform: rotate(-90deg);\\n    transform: rotate(-90deg);\\n    font-family: Courier, monospace;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/img/paper/paper.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"@media print\\n{\\n  body { -webkit-print-color-adjust: exact; width: 1010px; height: 427px;}\\n  #hide { display: none; }\\n  #print_paper { display: none; }\\n}\\n\\n\\n#print_paper, #generate_paper { margin-top:20px; }\\n\\n\\n.container {\\n    min-width: 1010px;\\n    max-width: 1010px;\\n}\\n\\n\\n.output {\\n    min-width: 1010px;\\n    margin:0;\\n    padding:0;\\n}\\n\\n\\n#paperkeyarea { width:1010px;\\n    display:block;\\n    position:relative;\\n}\\n\\n\\n#paperbg {width:1010px;\\n    border: 0;\\n    margin: 0;\\n    padding: 0;\\n    left: 0;}\\n\\n\\n.qr, .qr canvas, .qr img {\\n    width:150px;\\n    height:150px;\\n}\\n\\n\\n.qr {\\n    -ms-transform: rotate(-90deg);\\n    -webkit-transform: rotate(-90deg);\\n    transform: rotate(-90deg);\\n}\\n\\n\\n#qrcode_private {\\n    top:37px;\\n    left: 420px;\\n    z-index:100;\\n    margin:0;\\n    float:none;\\n    display:block;\\n    position:absolute;\\n\\n}\\n\\n\\n#qrcode_public {\\n    top:245px;\\n    left: 772px;\\n    z-index:100;\\n    margin:0;\\n    float:none;\\n    display:block;\\n    position:absolute;\\n\\n}\\n\\n\\n#paper_priv {\\n    /*border:1px solid black;*/\\n    position: absolute;\\n    top: 86px;\\n    left: 552px;\\n    z-index: 100;\\n    font-size: 10px;\\n    background-color: transparent;\\n    font-weight: 100;\\n    color: #000000;\\n    margin: 0;\\n    width: 158px;\\n    height: 50px;\\n    text-align: center;\\n    word-wrap: break-word;\\n    font-family: Courier, monospace;\\n    -ms-transform: rotate(-90deg);\\n    -webkit-transform: rotate(-90deg);\\n    transform: rotate(-90deg);\\n    font-family: Courier, monospace;\\n}\\n\\n\\n#paper_pub {\\n    /*border:1px solid black;*/\\n    position: absolute;\\n    bottom: 82px;\\n    left: 894px;\\n    z-index: 100;\\n    font-size: 10px;\\n    background-color: transparent;\\n    font-weight: 100;\\n    color: #000000;\\n    margin: 0;\\n    width: 158px;\\n    height: 50px;\\n    text-align: center;\\n    word-wrap: break-word;\\n    font-family: Courier, monospace;\\n    -ms-transform: rotate(-90deg);\\n    -webkit-transform: rotate(-90deg);\\n    transform: rotate(-90deg);\\n    font-family: Courier, monospace;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/img/paper/paper.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -890,6 +890,18 @@ eval("/* WEBPACK VAR INJECTION */(function(Buffer) {\n//const { sign, box, secre
 
 /***/ }),
 
+/***/ "./src/getWalletsNames.js":
+/*!********************************!*\
+  !*** ./src/getWalletsNames.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (() => {\n  const r = __webpack_require__(\"./src/img/paper sync recursive \\\\.png$\")\n  const importAll = (r) => r.keys().map(file => file.match(/([^\\/]+)\\/[^\\/]+$/)[1])\n  const uniqueWallets = [...new Set(importAll(r))];\n  // List of all available wallets.\n  return uniqueWallets\n});\n\n\n//# sourceURL=webpack:///./src/getWalletsNames.js?");
+
+/***/ }),
+
 /***/ "./src/img/ID_80x80.png":
 /*!******************************!*\
   !*** ./src/img/ID_80x80.png ***!
@@ -923,6 +935,61 @@ eval("module.exports = __webpack_require__.p + \"72779fa4920ee6c74d16b9535dee724
 
 /***/ }),
 
+/***/ "./src/img/paper lazy-once recursive ^\\.\\/.*\\/.*\\.png$":
+/*!********************************************************************!*\
+  !*** ./src/img/paper lazy-once ^\.\/.*\/.*\.png$ namespace object ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var map = {\n\t\"./default/front.png\": \"./src/img/paper/default/front.png\",\n\t\"./default/template.png\": \"./src/img/paper/default/template.png\",\n\t\"./default/thumb.png\": \"./src/img/paper/default/thumb.png\",\n\t\"./default/wallet.png\": \"./src/img/paper/default/wallet.png\",\n\t\"./inksavy/front.png\": \"./src/img/paper/inksavy/front.png\",\n\t\"./inksavy/thumb.png\": \"./src/img/paper/inksavy/thumb.png\",\n\t\"./inksavy/wallet.png\": \"./src/img/paper/inksavy/wallet.png\"\n};\n\n\nfunction webpackAsyncContext(req) {\n\treturn webpackAsyncContextResolve(req).then(function(id) {\n\t\treturn __webpack_require__.t(id, 7);;\n\t});\n}\nfunction webpackAsyncContextResolve(req) {\n\treturn Promise.resolve(/*! lazy-once context */).then(function() {\n\t\tif(!__webpack_require__.o(map, req)) {\n\t\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\t\te.code = 'MODULE_NOT_FOUND';\n\t\t\tthrow e;\n\t\t}\n\t\treturn map[req];\n\t});\n}\nwebpackAsyncContext.keys = function webpackAsyncContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackAsyncContext.resolve = webpackAsyncContextResolve;\nwebpackAsyncContext.id = \"./src/img/paper lazy-once recursive ^\\\\.\\\\/.*\\\\/.*\\\\.png$\";\nmodule.exports = webpackAsyncContext;\n\n//# sourceURL=webpack:///./src/img/paper_lazy-once_^\\.\\/.*\\/.*\\.png$_namespace_object?");
+
+/***/ }),
+
+/***/ "./src/img/paper sync recursive \\.png$":
+/*!***********************************!*\
+  !*** ./src/img/paper sync \.png$ ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var map = {\n\t\"./default/front.png\": \"./src/img/paper/default/front.png\",\n\t\"./default/template.png\": \"./src/img/paper/default/template.png\",\n\t\"./default/thumb.png\": \"./src/img/paper/default/thumb.png\",\n\t\"./default/wallet.png\": \"./src/img/paper/default/wallet.png\",\n\t\"./inksavy/front.png\": \"./src/img/paper/inksavy/front.png\",\n\t\"./inksavy/thumb.png\": \"./src/img/paper/inksavy/thumb.png\",\n\t\"./inksavy/wallet.png\": \"./src/img/paper/inksavy/wallet.png\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./src/img/paper sync recursive \\\\.png$\";\n\n//# sourceURL=webpack:///./src/img/paper_sync_\\.png$?");
+
+/***/ }),
+
+/***/ "./src/img/paper/default/front.png":
+/*!*****************************************!*\
+  !*** ./src/img/paper/default/front.png ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"140dd829398bb5dfd433bbea0d30fbef.png\";\n\n//# sourceURL=webpack:///./src/img/paper/default/front.png?");
+
+/***/ }),
+
+/***/ "./src/img/paper/default/template.png":
+/*!********************************************!*\
+  !*** ./src/img/paper/default/template.png ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"abc5d4cabbad9c5f9a3ec9c11a69ee43.png\";\n\n//# sourceURL=webpack:///./src/img/paper/default/template.png?");
+
+/***/ }),
+
+/***/ "./src/img/paper/default/thumb.png":
+/*!*****************************************!*\
+  !*** ./src/img/paper/default/thumb.png ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"0c913c2266b6749fd1855db766704c28.png\";\n\n//# sourceURL=webpack:///./src/img/paper/default/thumb.png?");
+
+/***/ }),
+
 /***/ "./src/img/paper/default/wallet.png":
 /*!******************************************!*\
   !*** ./src/img/paper/default/wallet.png ***!
@@ -931,6 +998,39 @@ eval("module.exports = __webpack_require__.p + \"72779fa4920ee6c74d16b9535dee724
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("module.exports = __webpack_require__.p + \"8b7177536015afcb4fbc898625976c06.png\";\n\n//# sourceURL=webpack:///./src/img/paper/default/wallet.png?");
+
+/***/ }),
+
+/***/ "./src/img/paper/inksavy/front.png":
+/*!*****************************************!*\
+  !*** ./src/img/paper/inksavy/front.png ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"805eb827d0d611a91955f9f715b4df29.png\";\n\n//# sourceURL=webpack:///./src/img/paper/inksavy/front.png?");
+
+/***/ }),
+
+/***/ "./src/img/paper/inksavy/thumb.png":
+/*!*****************************************!*\
+  !*** ./src/img/paper/inksavy/thumb.png ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"44d6173356c5b71c3405305eb56cf4f5.png\";\n\n//# sourceURL=webpack:///./src/img/paper/inksavy/thumb.png?");
+
+/***/ }),
+
+/***/ "./src/img/paper/inksavy/wallet.png":
+/*!******************************************!*\
+  !*** ./src/img/paper/inksavy/wallet.png ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"d236e7d2254c6ea914074cca52d0aa76.png\";\n\n//# sourceURL=webpack:///./src/img/paper/inksavy/wallet.png?");
 
 /***/ }),
 
@@ -945,6 +1045,18 @@ eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/di
 
 /***/ }),
 
+/***/ "./src/lazyLoadImage.js":
+/*!******************************!*\
+  !*** ./src/lazyLoadImage.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ((walletName, imgName, img) => {\n  __webpack_require__(\"./src/img/paper lazy-once recursive ^\\\\.\\\\/.*\\\\/.*\\\\.png$\")(`./${walletName}/${imgName}.png`)\n  .then(src => img.src = src.default)\n  .catch(err => console.error(err));\n});\n\n\n//# sourceURL=webpack:///./src/lazyLoadImage.js?");
+
+/***/ }),
+
 /***/ "./src/paper.js":
 /*!**********************!*\
   !*** ./src/paper.js ***!
@@ -953,7 +1065,7 @@ eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/di
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./img/ID_80x80.png */ \"./src/img/ID_80x80.png\");\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./img/KEY_80x80.png */ \"./src/img/KEY_80x80.png\");\n/* harmony import */ var _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./img/nyzo512b.png */ \"./src/img/nyzo512b.png\");\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./img/paper/default/wallet.png */ \"./src/img/paper/default/wallet.png\");\n/* harmony import */ var _img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _img_paper_paper_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./img/paper/paper.css */ \"./src/img/paper/paper.css\");\n/* harmony import */ var _img_paper_paper_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_img_paper_paper_css__WEBPACK_IMPORTED_MODULE_4__);\n\nconst QRCode = __webpack_require__(/*! easyqrcodejs */ \"./node_modules/easyqrcodejs/dist/easy.qrcode.min.js\")\nconst { NyzoKey } = __webpack_require__(/*! ./NyzoKey */ \"./src/NyzoKey.js\")\n\n\n\n\n\n\n\n\n\nfunction getQRConfig(text, logo) {\n    return { text: text, // Content\n\t\t\t\t\t\twidth: 240, // Width\n\t\t\t\t\t\theight: 240, // Height\n\t\t\t\t\t\tcolorDark: \"#000000\", // Dark color\n\t\t\t\t\t\tcolorLight: \"#ffffff\", // Light color\n\t\t\t\t\t\tPO: '#630900', // Global Position Outer color. if not set, the defaut is `colorDark`\n\t\t\t\t\t\tPI: '#630900',\n\t\t\t\t\t\tquietZone: 0,\n\t\t\t\t\t\tlogo: logo, // LOGO\n\t\t\t\t\t\tlogoBackgroundTransparent: true, // Whether use transparent image, default is false\n\t\t\t\t\t\tbackgroundImage: _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2___default.a,\n\t\t\t\t\t\tbackgroundImageAlpha: 0.3,\n\t\t\t\t\t\tautoColor: false,\n\t\t\t\t\t\tcorrectLevel: QRCode.CorrectLevel.M // L, M, Q, H - don't use L, not enough dup info to allow for the logo\n\t\t\t\t\t\t}}\n\n\nfunction mapToPaper(map, type='') {\n/*\n    let out = '<div class=\"col-12\"><table class=\"table\">'\n    let td = ''\n    let qr = ''\n    for (var key in map) {\n        const value = map[key]\n        qr = ''\n        if (key == 'Private Key') { qr = '<div class=\"qr\" style=\"margin:20px;\" id=\"qrcode_private\"></div'}\n        if (key == 'Public Id') { qr = '<div class=\"qr\" style=\"margin:20px;\" id=\"qrcode_public\"></div'}\n        out +=  '<tr><td>'+key+'</td><td><input type=\"text\" style=\"width:100%\" value=\"'+value+'\">'+qr+'</td>'+td+'</tr>'\n        td = ''\n    }\n    out += \"</table></div>\"\n    return out\n*/\n    let out = ''\n    out = '<div id=\"paperkeyarea\">'\n    out += '<div id=\"keyarea1\" class=\"keyarea art\">'\n    out += '<div class=\"artwallet\" id=\"artwallet1\">'\n    out += '<img id=\"paperbg\" class=\"paperbg\" src=\"'+_img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3___default.a+'\">'\n    out += '<div id=\"qrcode_private\" class=\"qr\"></div>'\n    out += '<div id=\"qrcode_public\" class=\"qr\"></div>'\n    out += '<div class=\"paper_pub\" id=\"paper_pub\">'+map['Public Id']+'</div>'\n    out += '<div class=\"paper_priv\" id=\"paper_priv\">'+map['Nyzo String']+'</div>'\n    out += '</div>'\n    out += '</div>'\n    out += '</div>'\n    out += '<button class=\"btn btn-primary\" type=\"button\" onclick=\"window.print();\" id=\"print_paper\">Print it!</button>'\n\n    return out\n\n}\n\nfunction generate_paper() {\n    const nyzoString = document.querySelector(\"#ns-input\").value.trim()\n    const key = new NyzoKey()\n    const list = key.NyzoStringToLegacy(nyzoString)\n    const name = list[0]\n    const value = list[1]\n    let public_id = ''\n    let outMap\n    if (name == 'Private Key') {\n        const key2 = new NyzoKey(value)\n        outMap = {\"Nyzo String\": nyzoString,\n        [`${name}`]: value,\n        \"Public Id\": key2.toNyzoPublicIdentifier()}\n        public_id = key2.toNyzoPublicIdentifier()\n    }  else {\n        // TODO: Error\n        alert(\"Need a key_\")\n    }\n    const wrapper = document.querySelector(\"#output\")\n    wrapper.innerHTML = mapToPaper(outMap)\n    if (list[0] == 'Private Key') {\n        let qr = new QRCode(document.getElementById(\"qrcode_private\"), getQRConfig(nyzoString, _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1___default.a))\n    }\n    let qr2 = new QRCode(document.getElementById(\"qrcode_public\"), getQRConfig(public_id, _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default.a))\n\n}\n\n\ndocument.querySelector(\"#generate_paper\").addEventListener(\"click\", generate_paper)\n\n\n//# sourceURL=webpack:///./src/paper.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./img/ID_80x80.png */ \"./src/img/ID_80x80.png\");\n/* harmony import */ var _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./img/KEY_80x80.png */ \"./src/img/KEY_80x80.png\");\n/* harmony import */ var _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./img/nyzo512b.png */ \"./src/img/nyzo512b.png\");\n/* harmony import */ var _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./img/paper/default/wallet.png */ \"./src/img/paper/default/wallet.png\");\n/* harmony import */ var _img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _img_paper_paper_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./img/paper/paper.css */ \"./src/img/paper/paper.css\");\n/* harmony import */ var _img_paper_paper_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_img_paper_paper_css__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _getWalletsNames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./getWalletsNames */ \"./src/getWalletsNames.js\");\n/* harmony import */ var _lazyLoadImage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lazyLoadImage */ \"./src/lazyLoadImage.js\");\n\nconst QRCode = __webpack_require__(/*! easyqrcodejs */ \"./node_modules/easyqrcodejs/dist/easy.qrcode.min.js\")\nconst { NyzoKey } = __webpack_require__(/*! ./NyzoKey */ \"./src/NyzoKey.js\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction getQRConfig(text, logo) {\n    return { text: text, // Content\n\t\t\t\t\t\twidth: 240, // Width\n\t\t\t\t\t\theight: 240, // Height\n\t\t\t\t\t\tcolorDark: \"#000000\", // Dark color\n\t\t\t\t\t\tcolorLight: \"#ffffff\", // Light color\n\t\t\t\t\t\tPO: '#630900', // Global Position Outer color. if not set, the defaut is `colorDark`\n\t\t\t\t\t\tPI: '#630900',\n\t\t\t\t\t\tquietZone: 0,\n\t\t\t\t\t\tlogo: logo, // LOGO\n\t\t\t\t\t\tlogoBackgroundTransparent: true, // Whether use transparent image, default is false\n\t\t\t\t\t\tbackgroundImage: _img_nyzo512b_png__WEBPACK_IMPORTED_MODULE_2___default.a,\n\t\t\t\t\t\tbackgroundImageAlpha: 0.3,\n\t\t\t\t\t\tautoColor: false,\n\t\t\t\t\t\tcorrectLevel: QRCode.CorrectLevel.M // L, M, Q, H - don't use L, not enough dup info to allow for the logo\n\t\t\t\t\t\t}}\n\n\nfunction mapToPaper(map, type='') {\n    let out = ''\n    out = '<div id=\"paperkeyarea\">'\n    out += '<div id=\"keyarea1\" class=\"keyarea art\">'\n    out += '<div class=\"artwallet\" id=\"artwallet1\">'\n    out += '<img id=\"paperbg\" class=\"paperbg\" src=\"'+_img_paper_default_wallet_png__WEBPACK_IMPORTED_MODULE_3___default.a+'\">'\n    out += '<div id=\"qrcode_private\" class=\"qr\"></div>'\n    out += '<div id=\"qrcode_public\" class=\"qr\"></div>'\n    out += '<div class=\"paper_pub\" id=\"paper_pub\">'+map['Public Id']+'</div>'\n    out += '<div class=\"paper_priv\" id=\"paper_priv\">'+map['Nyzo String']+'</div>'\n    out += '</div>'\n    out += '</div>'\n    out += '</div>'\n    out += '<button class=\"btn btn-primary\" type=\"button\" onclick=\"window.print();\" id=\"print_paper\">Print it!</button>'\n    return out\n}\n\nfunction generate_paper() {\n    const nyzoString = document.querySelector(\"#ns-input\").value.trim()\n    const key = new NyzoKey()\n    const list = key.NyzoStringToLegacy(nyzoString)\n    const name = list[0]\n    const value = list[1]\n    let public_id = ''\n    let outMap\n    if (name == 'Private Key') {\n        const key2 = new NyzoKey(value)\n        outMap = {\"Nyzo String\": nyzoString,\n        [`${name}`]: value,\n        \"Public Id\": key2.toNyzoPublicIdentifier()}\n        public_id = key2.toNyzoPublicIdentifier()\n    }  else {\n        // TODO: Error\n        alert(\"Need a key_\")\n    }\n    const wrapper = document.querySelector(\"#output\")\n    wrapper.innerHTML = mapToPaper(outMap)\n    if (list[0] == 'Private Key') {\n        let qr = new QRCode(document.getElementById(\"qrcode_private\"), getQRConfig(nyzoString, _img_KEY_80x80_png__WEBPACK_IMPORTED_MODULE_1___default.a))\n    }\n    let qr2 = new QRCode(document.getElementById(\"qrcode_public\"), getQRConfig(public_id, _img_ID_80x80_png__WEBPACK_IMPORTED_MODULE_0___default.a))\n    const img = document.getElementById(\"paperbg\")\n    Object(_lazyLoadImage__WEBPACK_IMPORTED_MODULE_6__[\"default\"])(document.querySelector(\"#wallet_template\").value, \"wallet\", img);\n}\n\n\nfunction template_changed() {\n    const select_elem = document.querySelector(\"#wallet_template\")\n    //console.log(select_elem.value)\n    const img = document.getElementById(\"preview_img\")\n    Object(_lazyLoadImage__WEBPACK_IMPORTED_MODULE_6__[\"default\"])(document.querySelector(\"#wallet_template\").value, \"front\", img);\n}\n\nfunction fill_select() {\n    const walletNames = Object(_getWalletsNames__WEBPACK_IMPORTED_MODULE_5__[\"default\"])()\n    const select_elem = document.querySelector(\"#wallet_template\")\n    walletNames.forEach((element, index) => {\n      const option_elem = document.createElement('option');\n      // Add index to option_elem\n      option_elem.value = element;\n      // Add element HTML\n      option_elem.textContent = element;\n      // Append option_elem to select_elem\n      select_elem.appendChild(option_elem);\n    });\n}\n\n\ndocument.querySelector(\"#generate_paper\").addEventListener(\"click\", generate_paper)\nfill_select()\ndocument.querySelector(\"#wallet_template\").addEventListener(\"change\", template_changed)\ntemplate_changed()\n\n\n//# sourceURL=webpack:///./src/paper.js?");
 
 /***/ }),
 
