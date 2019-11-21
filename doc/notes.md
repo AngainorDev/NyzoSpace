@@ -15,7 +15,7 @@ Current alternative: redo from https://github.com/dchest/tweetnacl-js
 (used by official nyzo wallet tools)
 
 
-## After base tests
+## After base tests
 
 Use tweetnacl and redo derivation.
 

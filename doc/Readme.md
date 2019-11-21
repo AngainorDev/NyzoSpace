@@ -55,6 +55,7 @@ Validated against from SLIP-0010 test vectors
 
 ## Changelog
 
+- v0.8 - 0.9: Add paper wallet generation
 - v0.6: Uses NyzoStrings module to produce also seed and public id in the required format.
 - v0.5: Matches SLIP-0010 test vectors
 - v0.4: Doc and GUI work
@@ -67,6 +68,8 @@ Validated against from SLIP-0010 test vectors
 Donations will help us maintain and improve this tool and other ones
 
 Nyzo public id:  
-77970524776adbe8-9842f4e6ad82984e-f3cad89bed86658d-4c48ff1bee26e4e2
+id__87vo1ihVrKMFD4bSXHU2D4ZRQKzsZpqCAkP8_PML9Ljzru.zFwbi  
+![](https://github.com/AngainorDev/NyzoSpace/raw/master/angainor-pub-ns.png)
 
+77970524776adbe8-9842f4e6ad82984e-f3cad89bed86658d-4c48ff1bee26e4e2  
 ![](https://github.com/AngainorDev/NyzoSpace/raw/master/angainor-pub.png)

@@ -6,7 +6,7 @@ import logo_id from './img/ID_80x80.png'
 import logo_key from './img/KEY_80x80.png'
 import nyzo512 from './img/nyzo512b.png'
 
-import paperbg from './img/paper/simple/nyzo-simple-wallet.ok.png'
+import paperbg from './img/paper/default/wallet.png'
 
 import './img/paper/paper.css'
 
