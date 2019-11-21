@@ -29,21 +29,6 @@ function getQRConfig(text, logo) {
 
 
 function mapToPaper(map, type='') {
-/*
-    let out = '<div class="col-12"><table class="table">'
-    let td = ''
-    let qr = ''
-    for (var key in map) {
-        const value = map[key]
-        qr = ''
-        if (key == 'Private Key') { qr = '<div class="qr" style="margin:20px;" id="qrcode_private"></div'}
-        if (key == 'Public Id') { qr = '<div class="qr" style="margin:20px;" id="qrcode_public"></div'}
-        out +=  '<tr><td>'+key+'</td><td><input type="text" style="width:100%" value="'+value+'">'+qr+'</td>'+td+'</tr>'
-        td = ''
-    }
-    out += "</table></div>"
-    return out
-*/
     let out = ''
     out = '<div id="paperkeyarea">'
     out += '<div id="keyarea1" class="keyarea art">'
@@ -57,9 +42,7 @@ function mapToPaper(map, type='') {
     out += '</div>'
     out += '</div>'
     out += '<button class="btn btn-primary" type="button" onclick="window.print();" id="print_paper">Print it!</button>'
-
     return out
-
 }
 
 function generate_paper() {

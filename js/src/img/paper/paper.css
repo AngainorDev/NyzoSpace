@@ -96,8 +96,8 @@
 
 
 #paper_pub {
-    position: absolute;
     /*border:1px solid black;*/
+    position: absolute;
     bottom: 82px;
     left: 894px;
     z-index: 100;
