@@ -28,7 +28,7 @@ Labeled template
 ![](img/nyzo-wallet1-template-label.ok.png)
 
 To submit your work, create a new directory under src/img/paper and place your image files there.  
-The name of your variation if the directory name. The required files to place are:
+The name of your variation is the directory name. The required files to produce are:
 
 - wallet.png - 2067x874 px, optimized png. The background graphic
 - thumb.png - 450 px width, optimized png. A thumbnail of a paper wallet
