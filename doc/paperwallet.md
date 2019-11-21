@@ -11,7 +11,7 @@ We plan to support several paperwallet form factors and templates.
 
 ## Paper Wallet Type 1
 
-![](https://github.com/AngainorDev/NyzoSpace/raw/master/src/img/paper/default/thumb.png)
+![](https://raw.githubusercontent.com/AngainorDev/NyzoSpace/master/js/src/img/paper/default/thumb.png)
 
 ### How to fold the Paper Wallet Type 1 
 
