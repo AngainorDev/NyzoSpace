@@ -38,7 +38,7 @@ function generate_tx() {
     const radios = document.getElementsByName('ns-vote')
     var vote = "1"
     for (var i = 0, length = radios.length; i < length; i++) {
-        console.log(radios[i])
+        //console.log(radios[i])
         if (radios[i].checked) {
             vote = radios[i].value
             break;

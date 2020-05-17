@@ -55,6 +55,7 @@ Validated against from SLIP-0010 test vectors
 
 ## Changelog
 
+- v1.2: Ship with bootstrap instead of cdn, new page for offline vote signing.
 - v1 - Paper wallet templates can be selected
 - v0.8 - 0.9: Add paper wallet generation
 - v0.6: Uses NyzoStrings module to produce also seed and public id in the required format.
