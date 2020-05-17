@@ -4,7 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {main : ["./src/index.js"],
+          css: ["./src/css/bootstrap.min.css"],
           convert: ["./src/convert.js"],
+          vote: ["./src/vote.js"],
           paper: ["./src/paper.js"]} ,
   target: "web",
   plugins: [
@@ -18,6 +20,11 @@ module.exports = {
       filename: "convert.html",
       template: "src/convert.html",
       chunks: ['convert']
+    }),
+    new HtmlWebpackPlugin({
+      filename: "vote.html",
+      template: "src/vote.html",
+      chunks: ['vote','css']
     }),
     new HtmlWebpackPlugin({
       filename: "paper.html",

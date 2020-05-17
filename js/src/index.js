@@ -7,6 +7,7 @@ const { NyzoKey } = require("./NyzoKey")
 import logo from './img/ID_80x80.png'
 import nyzo512 from './img/nyzo512c.png'
 
+import './css/bootstrap.min.css'
 
 function generate_mnemonic(bits=128) {
   const mnemonic = bip39.generateMnemonic(bits)

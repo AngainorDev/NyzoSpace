@@ -13,6 +13,7 @@ import './img/paper/paper.css'
 import getWalletsNames from './getWalletsNames'
 import lazyLoadImage from './lazyLoadImage';
 
+import './css/bootstrap.min.css'
 
 function getQRConfig(text, logo) {
     return { text: text, // Content

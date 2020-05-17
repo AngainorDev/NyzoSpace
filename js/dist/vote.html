@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Nyzo Space - Offline vote tools</title>
+    <!-- link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" -->
+  </head>
+
+
+  <body>
+  <div class="container-fluid">
+
+      <div class="row" style="margin-bottom:10px;margin-top:10px;">
+        <div class="col-6">
+          <a href="index.html" class="btn btn-success">HD Wallet</a>
+          <a href="convert.html" class="btn btn-success">Conversion tool</a>
+          <a href="paper.html" class="btn btn-success">Paper Wallet</a>
+          <a href="vote.html" class="btn btn-warning">Vote</a>
+        </div>
+      </div>
+
+
+    <h1>Nyzo Space - Offline Cycle Tx Vote</h1>
+      <div class="row">
+        <div class="col-12 col-md-8 col-xl-6">
+          <form>
+             <label for="ns-input">In Cycle verifier Private Key (NyzoString key_)</label>
+             <input type="TEXT" class="form-control" id="ns-input" placeholder="key_" aria-label="NyzoString" autocomplete="off" data-docs-version="4.3" value="">
+             <label for="ns-txsig">Cycle Transaction Signature (NyzoString sig_)</label>
+             <input type="TEXT" class="form-control" id="ns-txsig" placeholder="sig_" aria-label="Cycle Transaction" autocomplete="off" data-docs-version="4.3" value="">
+             <label>Your Vote:</label><br/>
+             <input type="radio" id="yes" name="ns-vote" value="1" checked>
+            <label for="yes">YES</label><br>
+            <input type="radio" id="no" name="ns-vote" value="0">
+            <label for="no">NO</label><br>
+             <label for="ns-delay">Delay (seconds) Tx will have to be forwarded to cycle before that delay.</label>
+             <input type="number" class="form-control" id="ns-delay" placeholder="30" aria-label="Transaction Delay" autocomplete="off" data-docs-version="4.3" value="30">
+             <br />
+             <button class="btn btn-primary" type="button" id="generate_tx">Generate tx__ Nyzo String</button>
+          </form>
+        </div>
+      </div>
+    <br />&nbsp;<br/>
+      <div class="row">
+        <div class="col-12 col-md-8 col-xl-6">
+
+            This page can be used offline, on an air gapped computer. It's auto build by github from the public source code from the github repo.<br/>
+            No private info is sent anywhere. Key is never stored and signing takes place in your browser.<br />
+            When hitting "Forward to cycle", the signed tx__ only is sent to the Nyzo Client relay, not the key itself.<br />
+            Simpler, full vanilla versions with minimal libs could come later on. Donations are welcome: <pre>id__87vo1ihVrKMFD4bSXHU2D4ZRQKzsZpqCAkP8_PML9Ljzru.zFwbi</pre>
+        </div>
+      </div>
+    <br />&nbsp;<br/>
+
+    <div class="row" >
+        <div id="output" class="col-12 col-md-8 col-xl-6">
+        </div>
+
+    </div>
+ <div class="row">
+        <div class="col-12 col-md-8 col-xl-6">
+            Nyzo HD Wallet courtesy of Angainor<br/>
+            <small>MIT Licence: do what you want, provided you keep the credits.</small><br/>
+
+        </div>
+      </div>
+    <br />&nbsp;<br/>
+ </div>
+
+  <script type="text/javascript" src="css.js"></script><script type="text/javascript" src="vote.js"></script></body>
+</html>

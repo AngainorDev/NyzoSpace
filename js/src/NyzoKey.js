@@ -11,8 +11,11 @@ const bip39 = require('bip39');
 const { NyzoFormat } = require('./NyzoFormat')
 nyzoFormat = new NyzoFormat()
 
+const Int64 = require('node-int64')
 const { NyzoStringPublicIdentifier } = require("nyzostrings/src/NyzoStringPublicIdentifier.js")
 const { NyzoStringPrivateSeed } = require("nyzostrings/src/NyzoStringPrivateSeed.js")
+const { NyzoStringSignature } = require("nyzostrings/src/NyzoStringSignature.js")
+const { NyzoStringTransaction } = require("nyzostrings/src/NyzoStringTransaction.js")
 const { nyzoStringEncoder } = require("nyzostrings/src/NyzoStringEncoder.js")
 
 const DEFAULT_PASSWORD = 'NYZO_ROCKS!'
@@ -115,6 +118,21 @@ NyzoKey.prototype.fromPaperCode = function (passPhrase) {
 }
 
 
+NyzoKey.prototype.fromNyzoPrivateSeed = function (nyzoString) {
+    const keyObject = nyzoStringEncoder.decode(nyzoString)
+    if (keyObject.constructor == NyzoStringPrivateSeed) {
+        this.seed = keyObject.getSeed()
+        //console.log(seed)
+        //this.seed = Buffer.from(seed, 'hex')
+        this.keyPair = sign.keyPair.fromSeed(this.seed)
+        //console.log(this.toPrivKeyHexWithDashes())
+        //console.log(this.toPubKeyHexWithDashes())
+        this.chainCode = null
+        return this
+	}
+}
+
+
 NyzoKey.prototype.toPaperCode = function () {
     // Mnemonic from seed, no chain code: unique address
     return bip39.entropyToMnemonic(this.toSeedHex())
@@ -157,7 +175,7 @@ NyzoKey.prototype.LegacyPubKeyToNyzoString = function (legacyHex) {
 }
 
 
-NyzoKey.prototype.NyzoStringToLegacy = function (nyzoString) {
+NyzoKey.prototype.NyzoStringToLegacy  = function (nyzoString) {
     const keyObject = nyzoStringEncoder.decode(nyzoString)
     if (keyObject == null) {
 		return(['Error', 'Not a nyzoString private or public key!'])
@@ -173,8 +191,42 @@ NyzoKey.prototype.NyzoStringToLegacy = function (nyzoString) {
 	}
 }
 
+NyzoKey.prototype.SignCycleTx = function (sig_, vote, delay) {
+    //console.log("address " + this.toPubKeyHexWithDashes())
+    const timestamp = new Int64(Date.now() + delay * 1000) // ms
+    //console.log("timestamp " +timestamp)
+    const amount = 0
+    const receiverBuffer = this.toPubKey()
+    const previousHashHeight = 0
+    const previousBlockHashBuffer = new Buffer(0)
+    const senderBuffer = this.toPubKey()
+    const dataBuffer = new Buffer(0) //Buffer.from(dataHex, 'hex')
+    const signatureBuffer = nyzoStringEncoder.decode(sig_).bytes // Fake sig
+    const transactionSignatureBuffer = nyzoStringEncoder.decode(sig_).bytes
+    var transaction = new NyzoStringTransaction(4, timestamp, amount, receiverBuffer, previousHashHeight, previousBlockHashBuffer, senderBuffer, dataBuffer, signatureBuffer, vote, transactionSignatureBuffer)
+    //console.log("tx1")
+    //console.log(transaction)
+    //console.log(transaction.bytes.length)
+    toSign = transaction.bytes.slice(0,1 + 8 + 32 + 1 + 64 )
+    //console.log(toSign.toString("hex"))
+    //console.log(toSign.length)
+    const signature = sign.detached(toSign, this.keyPair.secretKey);
+    //console.log("sig")
+    //console.log(signature.toString("hex"))
+    // tx with real sig
+    var transaction2 = new NyzoStringTransaction(4, timestamp, amount, receiverBuffer, previousHashHeight, previousBlockHashBuffer, senderBuffer, dataBuffer, signature, vote, transactionSignatureBuffer)
+    //console.log("tx2")
+    //console.log(transaction2)
+    //console.log("tx2b")
+    //console.log(transaction2.bytes.toString("hex"))
+    signed = nyzoStringEncoder.encode(transaction2)
+    //console.log(signed)
+    // hexStringAsUint8Array(
+    // stringAsUint8Array(
+    return signed
+}
 
 module.exports = {
-    version: "0.0.7",
+    version: "0.0.8",
     NyzoKey
 }

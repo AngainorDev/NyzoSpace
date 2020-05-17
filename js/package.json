@@ -1,6 +1,6 @@
 {
   "name": "nyzospace",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Nyzo HD Wallet based upon ed25519 crypto",
   "main": "index.js",
   "directories": {
@@ -12,7 +12,8 @@
     "create-hmac": "^1.1.7",
     "easyqrcodejs": "^3.2.0",
     "lodash": "^4.17.15",
-    "nyzostrings": "^0.0.6",
+    "node-int64": "^0.4.0",
+    "nyzostrings": "^0.0.8",
     "tweetnacl": "^1.0.1",
     "tweetnacl-util": "^0.15.0"
   },
@@ -20,7 +21,7 @@
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
-    "http-server": "^0.11.1",
+    "http-server": "^0.12.3",
     "jest": "^24.9.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.40.2",

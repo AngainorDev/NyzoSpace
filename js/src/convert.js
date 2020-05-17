@@ -6,6 +6,7 @@ import logo_id from './img/ID_80x80.png'
 import logo_key from './img/KEY_80x80.png'
 import nyzo512 from './img/nyzo512c.png'
 
+import './css/bootstrap.min.css'
 
 function getQRConfig(text, logo) {
     return { text: text, // Content
