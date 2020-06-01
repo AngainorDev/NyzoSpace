@@ -11,22 +11,32 @@ JS Port.
 - Convert any seed into a BIP39 mnemonic (paperCode) and back.
 - Usual operations on keys, incl. derivation and several formats.
 - conforms to SLIP-0010 
+- conforms to BIP44
+- supports optional and empty password
 - Relies on audited tweetnacl module for ed25519 crypto.
 - Supports Nyzo Strings
+- Provides error free QR codes for `id__` and `key_` nyzostrings. Key or id is humanly readable or QR code to avoid giving the wrong qr code.
+- supports papercodes to share or give, import one single address without revealing the whole wallet to a third party app.
+- supports skinable paper wallet 
 
 Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dist/index.html](https://angainordev.github.io/NyzoSpace/js/dist/index.html) 
 
 
 ## Derivation mechanism
 
-Note: This implementation follows SLIP-0010 [https://github.com/satoshilabs/slips/blob/master/slip-0010.md](https://github.com/satoshilabs/slips/blob/master/slip-0010.md)
+Note: This implementation follows SLIP-0010 [https://github.com/satoshilabs/slips/blob/master/slip-0010.md](https://github.com/satoshilabs/slips/blob/master/slip-0010.md) 
+and BIP44
 
 
-BIP 39 mnemonic (12 or more words) => seed (512 bits, 64 bytes)
+### Legacy derivation
+
+BIP 39 mnemonic (12 or more words, plus default pass "NYZO_ROCKS!") => seed (512 bits, 64 bytes)
 
 master seed = sha512Hmac('ed25519 seed').digest(seed)
 
 master seed (64 bytes) => left = seed, right = chainCode
+
+**Derivation path is m/x'**
 
 derived_seed = sha512Hmac(parent.chainCode).digest(0 + parent.seed + UINT32(index))
 
@@ -36,6 +46,14 @@ seed (32 bytes) => privatekey (64 bytes)
 
 privatekey (64 bytes) => publickey (32 bytes)
 
+### New derivation mechanism
+
+BIP 39 mnemonic (12 or more words, plus empty or custom pass ) => seed (512 bits, 64 bytes)
+
+
+**Derivation path is m/44'/380'/x'**
+
+> Compatibility is kept. Previously created wallets still can be rebuild the same way. 
 
 
 ## Paper codes
@@ -55,6 +73,7 @@ Validated against from SLIP-0010 test vectors
 
 ## Changelog
 
+- v1.3: Supports empty of different password, supports BIP44 derivation path, add matching ThreeDotTech test vectors.
 - v1.2: Ship with bootstrap instead of cdn, new page for offline vote signing.
 - v1 - Paper wallet templates can be selected
 - v0.8 - 0.9: Add paper wallet generation

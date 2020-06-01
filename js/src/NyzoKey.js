@@ -26,6 +26,9 @@ const CURVE_KEY = 'ed25519 seed'
 // ed25519 only uses hardened childs
 const HARDENED_OFFSET = 0x80000000;
 
+// Nyzo SLIP-044 Coin number
+const COIN_NUMBER = 380;
+
 function nyzoSeedToHexString(nyzoSeed) {
   return nyzoSeed.split('-').join('').slice(0, 64)
 }
@@ -69,7 +72,7 @@ NyzoKey.prototype.toSeedHexWithDashes = function() {
 
 NyzoKey.prototype.fromBIP39 = function (passPhrase, password='') {
     // HD Wallet from BIP39 - Uses seed and chainCode for derivation
-    if (password == '') password = DEFAULT_PASSWORD
+    //if (password == '') password = DEFAULT_PASSWORD // No more password by default
     const seed512 = bip39.mnemonicToSeedSync(passPhrase, password)  // This is a buffer
     const I = createHmac('sha512', Buffer.from(CURVE_KEY)).update(seed512).digest()
     this.seed = I.slice(0, 32)
@@ -106,6 +109,12 @@ NyzoKey.prototype.derive = function (index, hardened=true) {
     derived.keyPair = sign.keyPair.fromSeed(derived.seed)
     derived.chainCode = IR
     return derived
+}
+
+
+NyzoKey.prototype.deriveBIP44 = function (index) {
+    // Returns derived key m/44'/380'/index'
+    return this.derive(44).derive(380).derive(index)
 }
 
 
@@ -227,6 +236,6 @@ NyzoKey.prototype.SignCycleTx = function (sig_, vote, delay) {
 }
 
 module.exports = {
-    version: "0.0.8",
+    version: "0.0.9",
     NyzoKey
 }

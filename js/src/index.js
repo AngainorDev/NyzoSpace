@@ -86,17 +86,55 @@ function getKeyRowWithQR(index, seed, nyzoSeed, address, nyzoAddress, paperCode,
 
 
 
+function generate_options() {
+    const x = document.querySelector("#options")
+    if (x.style.display === "none") {
+        x.style.display = "block"
+    } else {
+        x.style.display = "none"
+    }
+}
+
+
+function generate_addresses_legacy() {
+    document.querySelector("#BIP39-pass").value = "NYZO_ROCKS!"
+    document.querySelector("#simple").checked = true
+    generate_addresses()
+}
+
+
+function generate_addresses_ledger() {
+    document.querySelector("#BIP39-pass").value = ""
+    document.querySelector("#bip44").checked = true
+    generate_addresses()
+}
+
+
 function generate_addresses() {
     const mnemonic = document.querySelector("#BIP39-input").value.trim()
-    const MasterKey = new NyzoKey().fromBIP39(mnemonic)
+    const pass  = document.querySelector("#BIP39-pass").value.trim()
+    const MasterKey = new NyzoKey().fromBIP39(mnemonic, pass)
     const count = parseInt(document.querySelector("#BIP39-count").value, 10)
+    const radios = document.getElementsByName('ns-derive')
+    var derive = "simple"
+    let i = 0
+    for (i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            derive = radios[i].value
+            break;
+        }
+    }
+    // console.log(derive)
     const wrapper = document.querySelector("#addresses")
     let content = ''
     let extraClass=''
     let ids = []
-    let i = 0
-    for (i=1; i<=count; i++) {
-        derived = MasterKey.derive(i)
+    for (i=0; i<count; i++) {
+        if (derive=='simple') {
+            derived = MasterKey.derive(i)
+        } else {
+            derived = MasterKey.deriveBIP44(i)
+        }
         content += getKeyRowWithQR(i, derived.toSeedHexWithDashes(), derived.toNyzoPrivateSeed(),
                                  derived.toPubKeyHexWithDashes(), derived.toNyzoPublicIdentifier(),
                                  derived.toPaperCode(), extraClass)
@@ -128,8 +166,8 @@ function generate_addresses() {
 						autoColor: false,
 						correctLevel: QRCode.CorrectLevel.M // L, M, Q, H - don't use L, not enough dup info to allow for the logo
 						}
-    for (i=1; i<=count; i++) {
-        config.text = ids[i-1]
+    for (i=0; i<count; i++) {
+        config.text = ids[i]
         let t = new QRCode(document.getElementById("qrcode_" + i), config)
     }
 }
@@ -137,3 +175,7 @@ function generate_addresses() {
 document.querySelector("#generate_mnemonic12").addEventListener("click", generate_mnemonic12)
 document.querySelector("#generate_mnemonic24").addEventListener("click", generate_mnemonic24)
 document.querySelector("#generate_addresses").addEventListener("click", generate_addresses)
+document.querySelector("#generate_options").addEventListener("click", generate_options)
+document.querySelector("#generate_addresses_legacy").addEventListener("click", generate_addresses_legacy)
+document.querySelector("#generate_addresses_ledger").addEventListener("click", generate_addresses_ledger)
+

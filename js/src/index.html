@@ -21,7 +21,7 @@
         </div>
       </div>
 
-    <h1>Nyzo Space - HD Wallets (Beta)</h1>
+    <h1>Nyzo Space - HD Wallets</h1>
       <div class="row">
         <div class="col-12 col-md-4 col-xl-6">
           <form>
@@ -29,11 +29,26 @@
             <input type="TEXT" class="form-control" id="BIP39-input" placeholder="Mnemonic" aria-label="BIP39  Mnemonic" autocomplete="off" data-docs-version="4.3">
             <button class="btn btn-primary" type="button" id="generate_mnemonic12">Generate (12 words)</button>
             <button class="btn btn-primary" type="button" id="generate_mnemonic24">Generate (24 words)</button>
-            <br />
-            <label for="BIP39-count">Addresses count</label>
-            <input type="NUMBER" class="form-control" id="BIP39-count" placeholder="10" aria-label="Addresses Count" autocomplete="off" value="10">
+            <button class="btn btn-secondary" type="button" id="generate_options">Options...</button>
+            <br />&nbsp;<br/>
+            <div id="options" style="display:none;">
+              <label for="BIP39-pass">BIP39 pass</label><br /><small>Previous versions of Nyzospace used "NYZO_ROCKS!" as password. You can also leave it empty for compatibility with other implementations, or to a password of yours.
+              This impacts seed generated from the BIP39 mnemonic. Use NYZO_ROCKS! if you have a seed from previous version and want to get the same addresses.</small>
+              <input type="TEXT" class="form-control" id="BIP39-pass" placeholder="" aria-label="BIP39  Mnemonic" autocomplete="off" data-docs-version="4.3" value="NYZO_ROCKS!">
+
               <br />
-            <button class="btn btn-primary" type="button" id="generate_addresses">Get Addresses</button>
+              <label>Derivation scheme</label><br/>
+              <input type="radio" id="simple" name="ns-derive" value="simple" >
+              <label for="simple">Simple m/x' (previous default)</label><br>
+              <input type="radio" id="bip44" name="ns-derive" value="bip44" checked>
+              <label for="bip44">BIP44 m/44'/380'/x'</label><br>
+              <label for="BIP39-count">Addresses count</label>
+              <input type="NUMBER" class="form-control" id="BIP39-count" placeholder="10" aria-label="Addresses Count" autocomplete="off" value="10">
+                <br />
+            </div>
+            <button class="btn btn-primary" type="button" id="generate_addresses" title="Generate with above settings">Get Addresses</button>
+            <button class="btn btn-secondary" type="button" id="generate_addresses_legacy" title="Set default password and simple derivation then derives">Get Legacy Addresses</button>
+            <button class="btn btn-success" type="button" id="generate_addresses_ledger" title="Set empty password and BIP44 derivation then derives">Get Ledger compatible Addresses</button>
           </form>
         </div>
       </div>
@@ -49,11 +64,6 @@
 
     </div>
  </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script -->
 
   </body>
 </html>

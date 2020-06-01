@@ -26,13 +26,15 @@ const derived_1 = '0b579bd21b2e2c23-7875312fab36758c-bdd567bf2df153e9-bff9515215
 const derived_314 = '7c81c71ad3f1a851-d9b999744ac59905-0925e25f27e20710-45f87c1c2883dbee'
 const derived_1_1 = '22c9ba332e1e67c2-938b29be8d98aad4-8d67de646d5ec213-6776a454721b0120'
 
+DEFAULT_PASSWORD = 'NYZO_ROCKS!'
+
 
 nyzoFormat = new NyzoFormat()
 
 
 describe("Seed Tests", () => {
   test("Convert mnemonic1 to root keypair", () => {
-    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic1)
+    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic1, DEFAULT_PASSWORD)
     //console.log("Seed1", parentKey.toSeedHexWithDashes())
     // console.log("Hex", parentKey.toPubKeyHex())
     //console.log("Hex/dashes1", parentKey.toPubKeyHexWithDashes())
@@ -40,7 +42,7 @@ describe("Seed Tests", () => {
     expect(parentKey.toPubKeyHexWithDashes()).toBe(samplePub1)
   })
   test("Convert mnemonic2 to root keypair", () => {
-    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic2)
+    const parentKey = new NyzoKey().fromBIP39(sampleWalletMnemonic2, DEFAULT_PASSWORD)
     //console.log("Seed2", parentKey.toSeedHexWithDashes())
     //console.log("Hex/dashes2", parentKey.toPubKeyHexWithDashes())
     expect(parentKey.toSeedHexWithDashes()).toBe(sampleSeed2)
@@ -146,6 +148,36 @@ describe("Derivation Tests slip-0010", () => {
     expect(derived.toChainCodeHex()).toBe('0b78a3226f915c082bf118f83618a618ab6dec793752624cbeb622acb562862d')
     expect(derived.toSeedHex()).toBe('1559eb2bbec5790b0c65d8693e4d0875b1747f4970ae8b650486ed7470845635')
     expect(derived.toPubKeyHex()).toBe('86fab68dcb57aa196c77c5f264f215a112c22a912c10d123b0d03c3c28ef1037')
+    expect(derived.toNyzoPublicIdentifier()).toBe('id__88sYKFVbmYFqs7w5-DjQ5r4iNzHhb13h8Z3gf3NFZP0VIwd.BwaB')
+    expect(derived.toNyzoPrivateSeed()).toBe('key_81mqYQL~PoBb36oprjXd27nPu7.9taYbqgi6ZohNy5pTvaV54p.3')
+  })
+})
+
+
+describe("Derivation Tests ThreeDotsTech", () => {
+  test("Derive ThreeDotsTech vector 44'/380'/0'", () => {
+    const parentKey = new NyzoKey().fromSLIP10Seed('0dc285fde768f7ff29b66ce7252d56ed92fe003b605907f7a4f683c3dc8586d34a914d3c71fc099bb38ee4a59e5b081a3497b7a323e90cc68f67b5837690310c')
+    const derived = parentKey.deriveBIP44(0)
+    expect(derived.toNyzoPublicIdentifier()).toBe('id__86D.wnNXXInb.Kpyrre34PTj1tFCk8aMhycFvzfdkxztut7MwNG_')
+    expect(derived.toNyzoPrivateSeed()).toBe('key_8fUPS3GxxYqyL.sx4zC1_CfnQFCoYjnBMNKdETuqgv~prurNnmH4')
+  })
+  test("Derive ThreeDotsTech vector 44'/380'/0' from BIP39 seed and pass", () => {
+    const parentKey = new NyzoKey().fromBIP39('edge defense waste choose enrich upon flee junk siren film clown finish luggage leader kid quick brick print evidence swap drill paddle truly occur', 'some password')
+    const derived = parentKey.deriveBIP44(0)
+    expect(derived.toNyzoPublicIdentifier()).toBe('id__86D.wnNXXInb.Kpyrre34PTj1tFCk8aMhycFvzfdkxztut7MwNG_')
+    expect(derived.toNyzoPrivateSeed()).toBe('key_8fUPS3GxxYqyL.sx4zC1_CfnQFCoYjnBMNKdETuqgv~prurNnmH4')
+  })
+  test("Derive ThreeDotsTech vector 44'/380'/14'", () => {
+    const parentKey = new NyzoKey().fromSLIP10Seed('0dc285fde768f7ff29b66ce7252d56ed92fe003b605907f7a4f683c3dc8586d34a914d3c71fc099bb38ee4a59e5b081a3497b7a323e90cc68f67b5837690310c')
+    const derived = parentKey.deriveBIP44(14)
+    expect(derived.toNyzoPublicIdentifier()).toBe('id__84QoW-E4fm1Pw8E4PPD.G9UCJvZDzccF0-jBo~VDwnrz8S0spIMz')
+    expect(derived.toNyzoPrivateSeed()).toBe('key_81xsrNFc-~IB9pAvsgHF4fBRkixFVqCv7FvD2uZ5Bgre3Lt8VVfn')
+  })
+  test("Derive ThreeDotsTech vector 44'/380'/0' from BIP39 seed 2", () => {
+    const parentKey = new NyzoKey().fromBIP39('hole kiss mouse jacket also board click series citizen slight kite smoke desk diary rent mercy inflict antique edge invite slush athlete total brain', '')
+    const derived = parentKey.deriveBIP44(0)
+    expect(derived.toNyzoPublicIdentifier()).toBe('id__86oaT2D2Pa~g7Ymze4egW4EBXFvT05CeMGV.7wV5xgVnqPGwR~g~')
+    expect(derived.toNyzoPrivateSeed()).toBe('key_84m9zRz60sI4upVem0BBipCLNM~xgsD_YnWN59L.vL6E4xQKTySS')
   })
 })
 

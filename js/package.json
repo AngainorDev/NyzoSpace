@@ -1,6 +1,6 @@
 {
   "name": "nyzospace",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Nyzo HD Wallet based upon ed25519 crypto",
   "main": "index.js",
   "directories": {

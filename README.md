@@ -10,8 +10,8 @@ A HD Wallet also saves you storage space ;)
 
 ## Current state
 
-Functional, validates SLIP0010.  
-See [https://angainordev.github.io/NyzoSpace/doc/](https://angainordev.github.io/NyzoSpace/doc/) for more.
+Functional, validates SLIP0010 and BIP44.  
+See [https://angainordev.github.io/NyzoSpace/doc/](https://angainordev.github.io/NyzoSpace/doc/) for more doc and changelog.
 
 Auto build Github pages version: [https://angainordev.github.io/NyzoSpace/js/dist/index.html](https://angainordev.github.io/NyzoSpace/js/dist/index.html)
 
@@ -22,6 +22,8 @@ Now comes with a conversion tool as well.
 New: Paper wallets! [https://angainordev.github.io/NyzoSpace/doc/paperwallet](https://angainordev.github.io/NyzoSpace/doc/paperwallet)
 
 New: Selectable wallet template
+
+New: Support for empty password and BIP44 derivation path, with test suite.
 
 ## Roadmap
 
