@@ -2,7 +2,7 @@
 
 Hierarchical Deterministic wallet for Nyzo Crypto currency.
 
-JS Port.
+JS Port. 
 
 
 ## Overview
